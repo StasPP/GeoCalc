@@ -1,0 +1,311 @@
+object LocForm: TLocForm
+  Left = 257
+  Top = 103
+  BorderStyle = bsDialog
+  Caption = #1051#1086#1082#1072#1083#1080#1079#1072#1094#1080#1103' '#1087#1083#1072#1085'-'#1089#1093#1077#1084
+  ClientHeight = 328
+  ClientWidth = 892
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object GroupBox1: TGroupBox
+    Left = 8
+    Top = 255
+    Width = 873
+    Height = 65
+    Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080' '#1083#1086#1082#1072#1083#1080#1079#1072#1094#1080#1080
+    TabOrder = 0
+    object Label3: TLabel
+      Left = 10
+      Top = 17
+      Width = 35
+      Height = 13
+      Caption = #1052#1077#1090#1086#1076':'
+    end
+    object Label1: TLabel
+      Left = 298
+      Top = 17
+      Width = 105
+      Height = 13
+      Caption = #1044#1086#1087#1091#1089#1082' '#1082#1086#1085#1090#1088#1086#1083#1103', '#1084':'
+    end
+    object MB: TComboBox
+      Left = 9
+      Top = 36
+      Width = 264
+      Height = 22
+      Style = csOwnerDrawFixed
+      ItemHeight = 16
+      ItemIndex = 0
+      TabOrder = 0
+      Text = #1055#1083#1086#1089#1082#1072#1103' 2D-'#1083#1086#1082#1072#1083#1080#1079#1072#1094#1080#1103' + '#1089#1076#1074#1080#1075' '#1087#1086' '#1074#1099#1089#1086#1090#1077
+      OnChange = MBChange
+      Items.Strings = (
+        #1055#1083#1086#1089#1082#1072#1103' 2D-'#1083#1086#1082#1072#1083#1080#1079#1072#1094#1080#1103' + '#1089#1076#1074#1080#1075' '#1087#1086' '#1074#1099#1089#1086#1090#1077)
+    end
+    object Sc1: TCheckBox
+      Left = 434
+      Top = 18
+      Width = 151
+      Height = 17
+      Caption = #1054#1076#1080#1085#1072#1082#1086#1074#1099#1081' '#1084#1072#1089#1096#1090#1072#1073
+      Checked = True
+      State = cbChecked
+      TabOrder = 1
+    end
+    object Button1: TButton
+      Left = 753
+      Top = 13
+      Width = 109
+      Height = 42
+      Caption = #1044#1072#1083#1077#1077' >>'
+      TabOrder = 2
+      OnClick = Button1Click
+    end
+    object CheckBox2: TCheckBox
+      Left = 586
+      Top = 19
+      Width = 161
+      Height = 17
+      Caption = #1055#1088#1086#1084#1077#1078#1091#1090#1086#1095#1085#1072#1103' '#1087#1088#1086#1077#1082#1094#1080#1103
+      Checked = True
+      Enabled = False
+      State = cbChecked
+      TabOrder = 3
+      Visible = False
+    end
+    object ErrLimit: TEdit
+      Left = 298
+      Top = 36
+      Width = 105
+      Height = 21
+      TabOrder = 4
+      Text = '0.01'
+    end
+    object SH: TCheckBox
+      Left = 434
+      Top = 37
+      Width = 145
+      Height = 17
+      Caption = #1054#1076#1080#1085#1072#1082#1086#1074#1072#1103' '#1074#1099#1089#1086#1090#1072
+      TabOrder = 5
+    end
+  end
+  object SK1: TGroupBox
+    Left = 8
+    Top = 7
+    Width = 433
+    Height = 241
+    Caption = #1057#1050' '#1089' '#1079#1072#1076#1072#1085#1085#1099#1084' '#1080#1089#1093#1086#1076#1085#1099#1084' '#1076#1072#1090#1091#1084#1086#1084
+    TabOrder = 1
+    object Load1: TSpeedButton
+      Left = 304
+      Top = 42
+      Width = 35
+      Height = 35
+      Flat = True
+      Glyph.Data = {
+        F6000000424DF600000000000000760000002800000010000000100000000100
+        04000000000080000000C40E0000C40E00001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00DDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDD0000000000000DD77777777777700DD7FB8B8B8B8
+        B700D7FB8B8B8B8B8070D7F8B8B8B8B870707F8B8B8B8B8B07707FFFFFFFFFF7
+        08707777777777777B70D7F8B8B8B8B8B870D7FB8B8B8FFFFF70D7F8B8B8F777
+        777DDD7FFFFF7DDDDDDDDDD77777DDDDDDDDDDDDDDDDDDDDDDDD}
+      OnClick = Load1Click
+    end
+    object Save1: TSpeedButton
+      Left = 344
+      Top = 42
+      Width = 35
+      Height = 35
+      Flat = True
+      Glyph.Data = {
+        EE000000424DEE0000000000000076000000280000000F0000000F0000000100
+        0400000000007800000000000000000000001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00D70000000000
+        0000D033000000770300D033000000770300D033000000770300D03300000000
+        0300D033333333333300D033000000003300D030777777770300D03077777777
+        0300D030777777770300D030777777770300D030777777770000D03077777777
+        0700D000000000000000DDDDDDDDDDDDDDD0}
+      OnClick = Save1Click
+    end
+    object Clear1: TSpeedButton
+      Left = 384
+      Top = 42
+      Width = 35
+      Height = 35
+      Flat = True
+      Glyph.Data = {
+        4E010000424D4E01000000000000760000002800000013000000120000000100
+        040000000000D800000000000000000000001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+        FFFFFFF00000FFFF78FFFFFFFFFFFFF00000FFF9918FFFFFF91FFFF00000FF99
+        9918FFFF9991FFF00000F79999918FF999991FF00000FF999999189999997FF0
+        0000FFF9999999999993FFF00000FFFF99999999993FFFF00000FFFFF9999999
+        93FFFFF00000FFFFFF99999918FFFFF00000FFFFF7999999918FFFF00000FFFF
+        799999999918FFF00000FFF79999999999918FF00000FF7999991F99999918F0
+        0000FF999991FFF9999918F00000FFF9991FFFFF99918FF00000FFFF91FFFFFF
+        F918FFF00000FFFFFFFFFFFFFFFFFFF00000}
+      OnClick = Clear1Click
+    end
+    object CSCat: TComboBox
+      Left = 7
+      Top = 29
+      Width = 274
+      Height = 22
+      Style = csOwnerDrawFixed
+      ItemHeight = 16
+      TabOrder = 0
+      OnChange = CSCatChange
+    end
+    object CSNum: TComboBox
+      Left = 7
+      Top = 53
+      Width = 274
+      Height = 22
+      Style = csOwnerDrawFixed
+      ItemHeight = 16
+      TabOrder = 1
+      OnChange = CSNumChange
+    end
+    object StringGrid1: TStringGrid
+      Left = 7
+      Top = 85
+      Width = 412
+      Height = 148
+      ColCount = 4
+      DefaultColWidth = 96
+      DefaultRowHeight = 16
+      FixedCols = 0
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goDrawFocusSelected, goColSizing, goRowMoving, goEditing, goAlwaysShowEditor, goThumbTracking]
+      TabOrder = 2
+      OnDrawCell = StringGrid1DrawCell
+      OnKeyDown = StringGrid1KeyDown
+    end
+  end
+  object SK2: TGroupBox
+    Left = 448
+    Top = 7
+    Width = 433
+    Height = 241
+    Caption = #1057#1050' '#1089' '#1086#1087#1088#1077#1076#1077#1083#1103#1077#1084#1099#1084#1080' '#1087#1072#1088#1072#1084#1077#1090#1088#1072#1084#1080' '#1083#1086#1082#1072#1083#1080#1079#1072#1094#1080#1080
+    TabOrder = 2
+    object Clear2: TSpeedButton
+      Left = 387
+      Top = 42
+      Width = 35
+      Height = 35
+      Flat = True
+      Glyph.Data = {
+        4E010000424D4E01000000000000760000002800000013000000120000000100
+        040000000000D800000000000000000000001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+        FFFFFFF00000FFFF78FFFFFFFFFFFFF00000FFF9918FFFFFF91FFFF00000FF99
+        9918FFFF9991FFF00000F79999918FF999991FF00000FF999999189999997FF0
+        0000FFF9999999999993FFF00000FFFF99999999993FFFF00000FFFFF9999999
+        93FFFFF00000FFFFFF99999918FFFFF00000FFFFF7999999918FFFF00000FFFF
+        799999999918FFF00000FFF79999999999918FF00000FF7999991F99999918F0
+        0000FF999991FFF9999918F00000FFF9991FFFFF99918FF00000FFFF91FFFFFF
+        F918FFF00000FFFFFFFFFFFFFFFFFFF00000}
+      OnClick = Clear2Click
+    end
+    object Save2: TSpeedButton
+      Left = 347
+      Top = 42
+      Width = 35
+      Height = 35
+      Flat = True
+      Glyph.Data = {
+        EE000000424DEE0000000000000076000000280000000F0000000F0000000100
+        0400000000007800000000000000000000001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00D70000000000
+        0000D033000000770300D033000000770300D033000000770300D03300000000
+        0300D033333333333300D033000000003300D030777777770300D03077777777
+        0300D030777777770300D030777777770300D030777777770000D03077777777
+        0700D000000000000000DDDDDDDDDDDDDDD0}
+      OnClick = Save2Click
+    end
+    object Load2: TSpeedButton
+      Left = 307
+      Top = 42
+      Width = 35
+      Height = 35
+      Flat = True
+      Glyph.Data = {
+        F6000000424DF600000000000000760000002800000010000000100000000100
+        04000000000080000000C40E0000C40E00001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00DDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDD0000000000000DD77777777777700DD7FB8B8B8B8
+        B700D7FB8B8B8B8B8070D7F8B8B8B8B870707F8B8B8B8B8B07707FFFFFFFFFF7
+        08707777777777777B70D7F8B8B8B8B8B870D7FB8B8B8FFFFF70D7F8B8B8F777
+        777DDD7FFFFF7DDDDDDDDDD77777DDDDDDDDDDDDDDDDDDDDDDDD}
+      OnClick = Load2Click
+    end
+    object Edit1: TEdit
+      Left = 11
+      Top = 29
+      Width = 278
+      Height = 21
+      Enabled = False
+      TabOrder = 0
+      Text = #1055#1083#1072#1085'-'#1089#1093#1077#1084#1072' ('#1083#1086#1082#1072#1083#1100#1085#1072#1103' '#1087#1088#1103#1084#1086#1091#1075#1086#1083#1100#1085#1072#1103' '#1057#1050')'
+    end
+    object PlanKind: TComboBox
+      Left = 11
+      Top = 53
+      Width = 278
+      Height = 22
+      Style = csOwnerDrawFixed
+      ItemHeight = 16
+      ItemIndex = 1
+      TabOrder = 1
+      Text = #1051#1077#1074#1072#1103' '#1086#1088#1080#1077#1085#1090#1072#1094#1080#1103' '#1086#1089#1077#1081
+      Items.Strings = (
+        #1055#1088#1072#1074#1072#1103' '#1086#1088#1080#1077#1085#1090#1072#1094#1080#1103' '#1086#1089#1077#1081
+        #1051#1077#1074#1072#1103' '#1086#1088#1080#1077#1085#1090#1072#1094#1080#1103' '#1086#1089#1077#1081)
+    end
+    object StringGrid2: TStringGrid
+      Left = 11
+      Top = 85
+      Width = 412
+      Height = 148
+      ColCount = 4
+      DefaultColWidth = 96
+      DefaultRowHeight = 16
+      FixedCols = 0
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goDrawFocusSelected, goColSizing, goRowMoving, goEditing, goAlwaysShowEditor, goThumbTracking]
+      TabOrder = 2
+      OnDrawCell = StringGrid2DrawCell
+      OnKeyDown = StringGrid2KeyDown
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 
+      'Text *.TXT|*.txt|MS Office Excel *.xls|*.xls;*.xlsx|Any file *.*' +
+      '|*.*'
+    Left = 288
+    Top = 240
+  end
+  object SaveDialog1: TSaveDialog
+    Filter = 'Text file|*.txt'
+    Left = 256
+    Top = 240
+  end
+end

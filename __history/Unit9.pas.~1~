@@ -1,0 +1,79 @@
+unit Unit9;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, StdCtrls, LangLoader, GeoFunctions, GeoFiles, GeoClasses;
+
+type
+  TForm9 = class(TForm)
+    GroupBox1: TGroupBox;
+    SpeedButton1: TSpeedButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    SpeedButton2: TSpeedButton;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form9: TForm9;
+
+implementation
+
+uses MainForm, Unit3, LocFm;
+
+{$R *.dfm}
+
+procedure TForm9.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Form1.close;
+end;
+
+procedure TForm9.FormShow(Sender: TObject);
+begin
+  Form1.Init;
+  LoadLang(True);
+  Form1.ReInit;
+  Repaint;
+end;
+
+procedure TForm9.SpeedButton1Click(Sender: TObject);
+var I:Integer;
+begin
+
+  Form3.Combobox1.Clear;
+  for i := 0 to Length(DatumList)-1 do
+     Form3.Combobox1.Items.Add(DatumList[i].Caption);
+  Form3.ComboBox3.Items := Form1.ComboBox1.Items;
+  Form3.Edit4.Items := Form1.ComboBox1.Items;
+  Form3.ComboBox3.ItemIndex := Form1.ComboBox1.ItemIndex;
+  Form3.ComboBox3.OnChange(nil);
+  Form3.ListBox1.ItemIndex := Form1.ListBox4.ItemIndex;
+  Form3.ListBox1.OnClick(nil);
+  Form3.Showmodal;
+
+  Form3.Showmodal;
+end;
+
+procedure TForm9.SpeedButton2Click(Sender: TObject);
+begin
+  LocForm.ShowModal;
+end;
+
+end.

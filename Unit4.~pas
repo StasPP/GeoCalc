@@ -1,0 +1,512 @@
+unit Unit4;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, StdCtrls, GeoClasses, GeoFiles, GeoString, LangLoader;
+
+type
+  TForm4 = class(TForm)
+    Label2: TLabel;
+    Label1: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Label6: TLabel;
+    ComboBox1: TComboBox;
+    Label3: TLabel;
+    Button1: TButton;
+    Label4: TLabel;
+    GroupBox1: TGroupBox;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    ListBox1: TListBox;
+    ListBox2: TListBox;
+    Button7: TButton;
+    ValueList: TStringGrid;
+    Label5: TLabel;
+    Button8: TButton;
+    Button9: TButton;
+    Label7: TLabel;
+    ListBox3: TListBox;
+    procedure ListBox1Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+
+    procedure RefreshLists;
+    procedure ListBox2Click(Sender: TObject);
+    procedure ValueListKeyPress(Sender: TObject; var Key: Char);
+    procedure Button9Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
+    procedure ListBox3Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4: TForm4;
+
+implementation
+
+uses MainForm, Unit3, Unit5;
+
+{$R *.dfm}
+
+procedure TForm4.ListBox1Click(Sender: TObject);
+var DN, j, l,m : integer;
+    AlreadyHas : boolean;
+begin
+ if ListBox1.ItemIndex = -1 then
+   exit;
+
+ DN := FindDatumByCaption(ListBox1.Items[ListBox1.ItemIndex]);
+
+ if DN = -1 then Exit;
+
+ Edit1.Text := DatumList[DN].Name;
+ Edit2.Text := DatumList[DN].Caption;
+ Edit3.Text := DatumList[DN].FileName;
+ ComboBox1.ItemIndex := FindEllipsoid(DatumList[DN].Ellipsoid.Name);
+ CheckBox1.Checked := false;
+ CheckBox2.Checked := false;
+
+ for j:=0 to length(DatumList[DN].Projections)-1 Do
+ begin
+      if DatumList[DN].Projections[j]='Gauss' then
+         CheckBox1.Checked := true;
+      if DatumList[DN].Projections[j]='UTM' then
+         CheckBox2.Checked := true;
+ end;
+
+ ListBox2.Clear;
+ for j:=0 to length(DatumList[DN].ConvertData)-1 Do
+ begin
+   ListBox2.Items.Add(DatumList[DN].ConvertData[j].ConvertDatumName);
+   if DatumList[DN].ConvertData[j].BadData then
+      ListBox2.Items[ListBox2.Count-1]:=  ListBox2.Items[ListBox2.Count-1]+'*';
+ end;
+
+ ListBox2.ItemIndex := 0;
+ ListBox2.OnClick(nil);
+
+ ListBox3.Clear;
+ for l := 0 to Length(DatumList)-1 do
+   for m := 0 to Length(DatumList[l].ConvertData)-1 do
+     if DatumList[l].ConvertData[m].ConvertDatumName = DatumList[DN].Name then
+          begin
+            AlreadyHas := false;
+            for j:= 0 to ListBox3.Items.Count-1 do
+              if DatumList[l].Caption = ListBox3.Items[j] then
+              begin
+                AlreadyHas :=true;
+                break;
+              end;
+            if not AlreadyHas then
+               ListBox3.Items.Add(DatumList[l].Caption);
+          end;
+
+ Button6.Enabled := true;
+ Button4.Enabled := true;
+ Button5.Enabled := true;
+
+end;
+
+procedure TForm4.Button6Click(Sender: TObject);
+begin
+  ListBox1.OnClick(nil);
+end;
+
+procedure TForm4.Button5Click(Sender: TObject);
+var j : integer;
+    FileName, dir: string;
+
+begin
+
+  dir := '';
+  for j:= length(Edit3.Text) downto 0 do
+    if Edit3.Text[j]='\' then
+    begin
+      dir := Copy(Edit3.Text,1,j);
+      FileName := Copy(Edit3.Text,j+1,Length(Edit3.Text)-j);
+      break;
+    end;
+
+  ForceDirectories(dir+ 'Deleted\');
+  CopyFile(PChar(Edit3.Text), PChar(dir+ 'Deleted\' + Filename), false);
+  DeleteFile(PChar(Edit3.Text));
+
+  Button6.Enabled := false;
+  Button4.Enabled := false;
+  Button5.Enabled := false;
+
+  DeleteDatum(FindDatumByCaption(ListBox1.Items[ListBox1.ItemIndex]));
+
+  RefreshLists;
+
+  ListBox1.ItemIndex := 0;
+
+  ListBox1.OnClick(nil);
+end;
+
+procedure TForm4.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  SetCurrentDir(Form1.MyDir);
+  RefreshDatums;
+
+  OldLang:='Russian';
+  GeoTranslate(OldLang, Lang, 'Data\Languages\');
+
+  Form1.ReInit;
+  Form3.RefreshLists;
+end;
+
+procedure TForm4.RefreshLists;
+var i: integer;
+begin
+  ComboBox1.Clear;
+  for i := 0 to Length(EllipsoidList)-1 do
+     Combobox1.Items.Add(EllipsoidList[i].Caption);
+
+  ListBox1.Clear;
+  for i := 0 to Length(DatumList)-1 do
+     ListBox1.Items.Add(DatumList[i].Caption);
+
+  ListBox1.OnClick(nil);
+end;
+
+procedure TForm4.ListBox2Click(Sender: TObject);
+var CurD : Integer;
+begin
+ ValueList.Cols[1].Clear;
+ CurD := FindDatumByCaption(ListBox1.Items[ListBox1.ItemIndex]);
+ if CurD = -1 then
+   exit;
+
+ if ListBox2.ItemIndex<>-1 then
+ begin
+    Button7.Enabled := true;
+    Button8.Enabled := true;
+    Button9.Enabled := true;
+
+    if ListBox2.ItemIndex > length(DatumList[CurD].ConvertData)-1 then
+      exit;
+    with ValueList do
+    Begin
+      Cells[1,0] := DatumList[CurD].ConvertData[ListBox2.ItemIndex].ConvertDatumName;
+      if DatumList[CurD].ConvertData[ListBox2.ItemIndex].BadData then
+          Cells[1,0] := Cells[1,0] + '*';
+      Cells[1,1] := FloatToStr(DatumList[CurD].ConvertData[ListBox2.ItemIndex].dx);
+      Cells[1,2] := FloatToStr(DatumList[CurD].ConvertData[ListBox2.ItemIndex].dy);
+      Cells[1,3] := FloatToStr(DatumList[CurD].ConvertData[ListBox2.ItemIndex].dz);
+      Cells[1,4] := FloatToStr(DatumList[CurD].ConvertData[ListBox2.ItemIndex].wx);
+      Cells[1,5] := FloatToStr(DatumList[CurD].ConvertData[ListBox2.ItemIndex].wy);
+      Cells[1,6] := FloatToStr(DatumList[CurD].ConvertData[ListBox2.ItemIndex].wz);
+      Cells[1,7] := FloatToStr(DatumList[CurD].ConvertData[ListBox2.ItemIndex].ms*1000000);
+    end;
+ end
+  else
+  begin
+    // ValueList.Enabled := false;
+    Button7.Enabled := false;
+    Button8.Enabled := false;
+    Button9.Enabled := false;
+  end;
+end;
+
+procedure TForm4.ValueListKeyPress(Sender: TObject; var Key: Char);
+begin
+///
+  
+end;
+
+procedure TForm4.Button9Click(Sender: TObject);
+begin
+ ListBox2.OnClick(nil);
+end;
+
+procedure TForm4.Button2Click(Sender: TObject);
+var CurD, i : Integer;
+begin
+
+  CurD := FindDatumByCaption(ListBox1.Items[ListBox1.ItemIndex]);
+
+  if CurD = -1 then
+   exit;
+
+  AddConversionProperties(CurD, ValueList.Cells[1,0],
+                          StrToFloat2(ValueList.Cells[1,1]),
+                          StrToFloat2(ValueList.Cells[1,2]),
+                          StrToFloat2(ValueList.Cells[1,3]),
+                          StrToFloat2(ValueList.Cells[1,4]),
+                          StrToFloat2(ValueList.Cells[1,5]),
+                          StrToFloat2(ValueList.Cells[1,6]),
+                          StrToFloat2(ValueList.Cells[1,7])/1000000);
+
+  ListBox1.OnClick(nil);
+  ListBox2.ItemIndex := ListBox2.Count-1;
+  ListBox2.OnClick(nil);
+end;
+
+procedure TForm4.Button7Click(Sender: TObject);
+var CurD : Integer;
+begin
+
+  CurD := FindDatumByCaption(ListBox1.Items[ListBox1.ItemIndex]);
+
+  if CurD = -1 then
+   exit;
+
+  DeleteConversionProperties(CurD, ListBox2.ItemIndex);
+
+  ListBox1.OnClick(nil);
+  ListBox2.ItemIndex := ListBox2.Count-1;
+  ListBox2.OnClick(nil);
+end;
+
+procedure TForm4.Button4Click(Sender: TObject);
+var i, j, Current : integer;
+    FileName, dir: string;
+    CD : TDatum;
+begin
+
+
+  j := 0;
+  Current := FindDatumByCaption(ListBox1.Items[ListBox1.ItemIndex]);
+
+  for i := 0 to Length(DatumList)-1 do
+    if ( (DatumList[i].Name = Edit1.Text)
+        or (DatumList[i].Caption = Edit2.Text) )
+        and (i<>Current) then
+           inc(j);
+
+  if j >= 1 then
+  begin
+    MessageDlg(inf[31],mtError,[mbOk],6);
+    exit;
+  end;
+
+  dir := '';
+  for j:= length(Edit3.Text) downto 0 do
+    if Edit3.Text[j]='\' then
+    begin
+      dir := Copy(Edit3.Text,1,j);
+      FileName := Copy(Edit3.Text,j+1,Length(Edit3.Text)-j);
+      break;
+    end;
+
+  ForceDirectories(dir+ 'Backup\');
+  CopyFile(PChar(Edit3.Text), PChar(dir+ 'Backup\' + Filename), false);
+
+  FileName := Edit3.Text;
+
+  if Button8.Enabled then
+     AddConversionProperties(Current, ValueList.Cells[1,0],
+                          StrToFloat2(ValueList.Cells[1,1]),
+                          StrToFloat2(ValueList.Cells[1,2]),
+                          StrToFloat2(ValueList.Cells[1,3]),
+                          StrToFloat2(ValueList.Cells[1,4]),
+                          StrToFloat2(ValueList.Cells[1,5]),
+                          StrToFloat2(ValueList.Cells[1,6]),
+                          StrToFloat2(ValueList.Cells[1,7])/1000000);
+
+  CD := DatumList[Current];
+
+  CD.Name := Edit1.Text;
+  CD.Caption := Edit2.Text;
+
+  CD.Ellipsoid := EllipsoidList[ComboBox1.ItemIndex];
+
+  CD.FileName := FileName;
+
+  SetLength(CD.Projections,0);
+  if CheckBox1.Checked then
+  begin
+    SetLength(CD.Projections,length(CD.Projections)+1);
+    CD.Projections[Length(CD.Projections)-1]:='Gauss';
+  end;
+  if CheckBox2.Checked then
+  begin
+    SetLength(CD.Projections,length(CD.Projections)+1);
+    CD.Projections[Length(CD.Projections)-1]:='UTM';
+  end;
+
+  DeleteDatum(Current);
+  SaveDatumToFile(FileName, CD);
+
+  RefreshLists;
+  for i := 0 to ListBox1.Count-1 do
+    if ListBox1.Items[i] = CD.Caption then
+    begin
+      ListBox1.ItemIndex := i;
+      ListBox1.OnClick(nil);
+      break;
+    end;
+end;
+
+procedure TForm4.Button8Click(Sender: TObject);
+var CurD, i: Integer;
+    Name : String;
+begin
+  CurD := FindDatumByCaption(ListBox1.Items[ListBox1.ItemIndex]);
+
+  if CurD = -1 then
+   exit;
+
+  if ListBox2.ItemIndex = -1 then
+   exit;
+
+ //if DatumList[CurD].ConvertData[ListBox2.ItemIndex].BadData then
+ // DeleteConversionProperties(CurD, ListBox2.ItemIndex);
+
+  Name := ValueList.Cells[1,0];
+
+  AddConversionProperties(CurD, ValueList.Cells[1,0],
+                          StrToFloat2(ValueList.Cells[1,1]),
+                          StrToFloat2(ValueList.Cells[1,2]),
+                          StrToFloat2(ValueList.Cells[1,3]),
+                          StrToFloat2(ValueList.Cells[1,4]),
+                          StrToFloat2(ValueList.Cells[1,5]),
+                          StrToFloat2(ValueList.Cells[1,6]),
+                          StrToFloat2(ValueList.Cells[1,7])/1000000);
+
+  ListBox1.OnClick(nil);
+  for i := 0 to ListBox2.Count-1 do
+    if Name = ListBox2.Items[i] then
+      ListBox2.ItemIndex := i;
+  ListBox2.OnClick(nil);
+end;
+
+procedure TForm4.ListBox3Click(Sender: TObject);
+var i:integer;
+begin
+//  Listbox3.ItemIndex := -1;
+  For i:= 0 To ListBox1.ItemIndex-1 do
+    if ListBox1.Items[i] = ListBox3.Items[ListBox3.ItemIndex] then
+       ListBox1.ItemIndex := i;
+  ListBox1.OnClick(nil);     
+end;
+
+procedure TForm4.Button3Click(Sender: TObject);
+var i, j, Current : integer;
+    FileName, dir: string;
+    CD : TDatum;
+begin
+
+  j := 0;
+  Current := FindDatumByCaption(ListBox1.Items[ListBox1.ItemIndex]);
+
+  for i := 0 to Length(DatumList)-1 do
+    if ( (DatumList[i].Name = Edit1.Text)
+        or (DatumList[i].Caption = Edit2.Text) )  then
+           inc(j);
+
+  if j >= 1 then
+  begin
+    MessageDlg(inf[31],mtError,[mbOk],6);
+    exit;
+  end;
+
+  dir := '';
+  for j:= length(Edit3.Text) downto 0 do
+    if Edit3.Text[j]='\' then
+    begin
+      dir := Copy(Edit3.Text,1,j);
+      FileName := Copy(Edit3.Text,j+1,Length(Edit3.Text)-j);
+      break;
+    end;
+
+  i := 1;
+  repeat
+    FileName:= dir + 'User' + IntToStr(i)+'.txt';
+    inc(i);
+  until Fileexists(FileName) = false;
+
+  Edit3.Text := Filename;
+
+   if Button8.Enabled then
+      AddConversionProperties(Current, ValueList.Cells[1,0],
+                          StrToFloat2(ValueList.Cells[1,1]),
+                          StrToFloat2(ValueList.Cells[1,2]),
+                          StrToFloat2(ValueList.Cells[1,3]),
+                          StrToFloat2(ValueList.Cells[1,4]),
+                          StrToFloat2(ValueList.Cells[1,5]),
+                          StrToFloat2(ValueList.Cells[1,6]),
+                          StrToFloat2(ValueList.Cells[1,7])/1000000);
+
+  CD := DatumList[Current];
+
+  CD.Name := Edit1.Text;
+  CD.Caption := Edit2.Text;
+
+  CD.Ellipsoid := EllipsoidList[ComboBox1.ItemIndex];
+
+  SetLength(CD.Projections,0);
+  if CheckBox1.Checked then
+  begin
+    SetLength(CD.Projections,length(CD.Projections)+1);
+    CD.Projections[Length(CD.Projections)-1]:='Gauss';
+  end;
+  if CheckBox2.Checked then
+  begin
+    SetLength(CD.Projections,length(CD.Projections)+1);
+    CD.Projections[Length(CD.Projections)-1]:='UTM';
+  end;
+
+  SaveDatumToFile(FileName, CD);
+
+  RefreshLists;
+  for i := 0 to ListBox1.Count-1 do
+    if ListBox1.Items[i] = CD.Caption then
+    begin
+      ListBox1.ItemIndex := i;
+      ListBox1.OnClick(nil);
+      break;
+    end;
+
+end;
+
+procedure TForm4.Button1Click(Sender: TObject);
+begin
+  Form5.RefreshList;
+  Form5.ListBox1.ItemIndex := ComboBox1.ItemIndex;
+  Form5.ListBox1.OnClick(nil);
+  Form5.ShowModal;
+end;
+
+procedure TForm4.FormActivate(Sender: TObject);
+begin
+  SetCurrentDir(Form1.MyDir);
+end;
+
+procedure TForm4.FormShow(Sender: TObject);
+begin
+ with ValueList do
+ Begin
+   Cells[0,0] := inf[23];
+   Cells[0,1] := inf[24];
+   Cells[0,2] := inf[25];
+   Cells[0,3] := inf[26];
+   Cells[0,4] := inf[27];
+   Cells[0,5] := inf[28];
+   Cells[0,6] := inf[29];
+   Cells[0,7] := inf[30];
+ End;
+end;
+
+end.

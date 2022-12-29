@@ -1,0 +1,30 @@
+Имя:
+MSK71_SK95-1_javad
+
+Название:
+МСК-71.1 Тульская область на базе SK-95 (Javad)
+
+Датум:
+SK95_Javad
+
+Тип проекции:
+Gauss
+
+Категория:
+Местные системы координат субъектов РФ
+
+Lat. of natural origin:
+37.427222222222
+
+Long. of natural origin:
+0
+
+Scale:
+1
+
+False Easting:
+250000
+
+False Northing:
+-5263444.764
+

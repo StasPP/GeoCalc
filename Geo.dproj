@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{55cf64de-4aad-4b61-96eb-42a05b1cfe32}</ProjectGuid>
+    <MainSource>Geo.dpr</MainSource>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+    <DCC_DependencyCheckOutputName>Geo.exe</DCC_DependencyCheckOutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_DebugInformation>False</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_Define>RELEASE</DCC_Define>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_Define>DEBUG</DCC_Define>
+    <DCC_UnitSearchPath>GeoToolsUnits;TabFunctions</DCC_UnitSearchPath>
+    <DCC_ResourcePath>GeoToolsUnits;TabFunctions</DCC_ResourcePath>
+    <DCC_ObjPath>GeoToolsUnits;TabFunctions</DCC_ObjPath>
+    <DCC_IncludePath>GeoToolsUnits;TabFunctions</DCC_IncludePath>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality</Borland.Personality>
+    <Borland.ProjectType>VCLApplication</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><Delphi.Personality><Parameters><Parameters Name="RunParams">-ed</Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1049</VersionInfo><VersionInfo Name="CodePage">1251</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Source><Source Name="MainSource">Geo.dpr</Source></Source></Delphi.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Delphi.Targets" />
+  <ItemGroup>
+    <DelphiCompile Include="Geo.dpr">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="GeoToolsUnits\GeoClasses.pas" />
+    <DCCReference Include="GeoToolsUnits\GeoFiles.pas" />
+    <DCCReference Include="GeoToolsUnits\GeoFunctions.pas" />
+    <DCCReference Include="GeoToolsUnits\GeoLocalization.pas" />
+    <DCCReference Include="GeoToolsUnits\GeoMath.pas" />
+    <DCCReference Include="GeoToolsUnits\GeoString.pas" />
+    <DCCReference Include="LangLoader.pas" />
+    <DCCReference Include="LoadFm.pas">
+      <Form>OpenTabFm</Form>
+    </DCCReference>
+    <DCCReference Include="LocFm.pas">
+      <Form>LocForm</Form>
+    </DCCReference>
+    <DCCReference Include="LocMain.pas">
+      <Form>LocalizationFm</Form>
+    </DCCReference>
+    <DCCReference Include="MainForm.pas">
+      <Form>Form1</Form>
+    </DCCReference>
+    <DCCReference Include="Unit2.pas">
+      <Form>Form2</Form>
+    </DCCReference>
+    <DCCReference Include="Unit3.pas">
+      <Form>Form3</Form>
+    </DCCReference>
+    <DCCReference Include="Unit4.pas">
+      <Form>Form4</Form>
+    </DCCReference>
+    <DCCReference Include="Unit5.pas">
+      <Form>Form5</Form>
+    </DCCReference>
+    <DCCReference Include="Unit6.pas">
+      <Form>Form6</Form>
+    </DCCReference>
+    <DCCReference Include="Unit7.pas">
+      <Form>Form7</Form>
+    </DCCReference>
+    <DCCReference Include="Unit8.pas">
+      <Form>Form8</Form>
+    </DCCReference>
+    <DCCReference Include="Unit9.pas">
+      <Form>Form9</Form>
+    </DCCReference>
+    <DCCReference Include="USaveLocaliz.pas">
+      <Form>SaveLoc</Form>
+    </DCCReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,2263 @@
+unit MainForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Grids, ValEdit, Buttons, Spin, ComCtrls, XPMan,
+  Menus, LangLoader, Geoid, jpeg, OutputPlus, ComObj;
+
+type
+  TForm1 = class(TForm)
+    Button6: TButton;
+    Button3: TButton;
+    StringGrid1: TStringGrid;
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Edit6: TEdit;
+    Edit7: TEdit;
+    Edit8: TEdit;
+    Button4: TButton;
+    Button1: TButton;
+    Button2: TButton;
+    Edit9: TEdit;
+    Edit10: TEdit;
+    Button10: TButton;
+    Label6: TLabel;
+    StringGrid2: TStringGrid;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    ListBox3: TListBox;
+    Button5: TButton;
+    Label8: TLabel;
+    Button7: TButton;
+    Label9: TLabel;
+    StatusBar1: TStatusBar;
+    Label10: TLabel;
+    CheckBox3: TCheckBox;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    Label5: TLabel;
+    Label7: TLabel;
+    RadioGroup1: TRadioGroup;
+    ListBox1: TComboBox;
+    ListBox2: TComboBox;
+    RadioGroup2: TRadioGroup;
+    SpinEdit1: TSpinEdit;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    SpinEdit2: TSpinEdit;
+    OpenDialog1: TOpenDialog;
+    SaveDialog1: TSaveDialog;
+    TabSheet2: TTabSheet;
+    Shape1: TShape;
+    ListBox4: TListBox;
+    ComboBox1: TComboBox;
+    ListBox5: TListBox;
+    ComboBox2: TComboBox;
+    Button8: TButton;
+    ProgressBar1: TProgressBar;
+    ProgressBar2: TProgressBar;
+    PopupMenu1: TPopupMenu;
+    N1: TMenuItem;
+    PopupMenu2: TPopupMenu;
+    MenuItem1: TMenuItem;
+    PopupMenu3: TPopupMenu;
+    PopupMenu4: TPopupMenu;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    Button9: TButton;
+    Label11: TLabel;
+    RS: TRadioGroup;
+    LangBox: TComboBox;
+    PopupMenu5: TPopupMenu;
+    P5N1: TMenuItem;
+    N4: TMenuItem;
+    N5: TMenuItem;
+    Geoid1: TComboBox;
+    Geoid2: TComboBox;
+    Label12: TLabel;
+    SpeedButton8: TSpeedButton;
+    SpeedButton9: TSpeedButton;
+    Label13: TLabel;
+    Panel2: TPanel;
+    Image1: TImage;
+    MainMenu1: TMainMenu;
+    N6: TMenuItem;
+    N7: TMenuItem;
+    N8: TMenuItem;
+    N9: TMenuItem;
+    N10: TMenuItem;
+    N11: TMenuItem;
+    N12: TMenuItem;
+    N13: TMenuItem;
+    N14: TMenuItem;
+    N15: TMenuItem;
+    N16: TMenuItem;
+    N19: TMenuItem;
+    N20: TMenuItem;
+    N21: TMenuItem;
+    N17: TMenuItem;
+    N18: TMenuItem;
+    N22: TMenuItem;
+    N23: TMenuItem;
+    N24: TMenuItem;
+    N25: TMenuItem;
+    N26: TMenuItem;
+    N27: TMenuItem;
+    N28: TMenuItem;
+    Panel3: TPanel;
+    ComboBox3: TComboBox;
+    ShowLitera: TCheckBox;
+    RS1: TRadioButton;
+    RS2: TRadioButton;
+    CheckBox4: TCheckBox;
+    Bevel1: TBevel;
+    ComboBox4: TComboBox;
+    SpeedButton10: TSpeedButton;
+
+    procedure RenameTabs(StringGrid:TStringGrid; TabNameStyle:byte);
+    procedure ClearGrid(StringGrid:TStringGrid);
+    procedure TabStringGrid(StringGrid:TStringGrid);
+    procedure DelStringGrid(StringGrid:TStringGrid);
+    procedure OpenTable(StringGrid:TStringGrid; S:TStringList);
+    procedure SaveTable(StringGrid:TStringGrid; FileName: String; FileType:byte);
+
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
+    procedure ListBox1Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure ListBox2Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure RadioGroup1Click(Sender: TObject);
+    procedure RadioGroup2Click(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
+    procedure StringGrid1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
+    procedure StringGrid2KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormCreate(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure CheckBox2Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure ListBox3Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+
+    procedure Init;
+    procedure ReInit;
+    procedure PageControl1Change(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure ComboBox2Change(Sender: TObject);
+    procedure ListBox4Click(Sender: TObject);
+    procedure ListBox5Click(Sender: TObject);
+    procedure ComboBox3Change(Sender: TObject);
+    procedure N1Click(Sender: TObject);
+    procedure MenuItem1Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure N3Click(Sender: TObject);
+    procedure ListBox4MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure ListBox5MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+
+    procedure OnShowHint(var HintStr: string;
+               var CanShow: Boolean; var HintInfo: THintInfo);
+    procedure Button9Click(Sender: TObject);
+    procedure RSClick(Sender: TObject);
+    procedure LangBoxChange(Sender: TObject);
+    procedure RS1Click(Sender: TObject);
+    procedure RS2Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
+    procedure N5Click(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
+    procedure SpeedButton9Click(Sender: TObject);
+    procedure StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
+      Rect: TRect; State: TGridDrawState);
+    procedure StringGrid2DrawCell(Sender: TObject; ACol, ARow: Integer;
+      Rect: TRect; State: TGridDrawState);
+    procedure N15Click(Sender: TObject);
+    procedure N16Click(Sender: TObject);
+    procedure N20Click(Sender: TObject);
+    procedure N21Click(Sender: TObject);
+    procedure N26Click(Sender: TObject);
+    procedure N14Click(Sender: TObject);
+    procedure N22Click(Sender: TObject);
+    procedure N23Click(Sender: TObject);
+    procedure N19Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure ComboBox4Change(Sender: TObject);
+
+    procedure FindWGS;
+    procedure SpeedButton10Click(Sender: TObject);
+   // procedure CMDialogKey(var Msg: TWMKey);
+   //   message CM_DIALOGKEY;
+  private
+    { Private declarations }
+  public
+    procedure FindCat(Cat:String; ListBox:TListBox);
+    procedure XlsToTXT(XLSFile:string);
+  public
+     MyDir: String;
+     CanLoad : boolean;
+     OpenFileName:String;
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  Inited: Boolean =  false;
+  DMSMode: Integer = 0;
+  Psz: Integer = -1;
+  HintX,HintY : integer;
+
+implementation
+
+uses GeoFunctions, GeoClasses, GeoFiles, GeoString, Unit2, Unit3, Unit4,
+  Unit6, Unit7, Unit5, LocFm;
+{$R *.dfm}
+
+procedure TForm1.XlsToTXT(XLSFile:string);
+ const
+  xlCellTypeLastCell = $0000000B;
+var
+  ExlApp, Sheet: OLEVariant;
+  i, j, r, c:integer;
+  S: TStringList; str:String;
+begin
+  ExlApp := CreateOleObject('Excel.Application');
+  ExlApp.Visible := false;
+
+  ExlApp.Workbooks.Open(XLSFile);
+  Sheet := ExlApp.Workbooks[ExtractFileName(XLSFile)].WorkSheets[1];
+  Sheet.Cells.SpecialCells(xlCellTypeLastCell, EmptyParam).Activate;
+
+  r := ExlApp.ActiveCell.Row;
+  c := ExlApp.ActiveCell.Column;
+
+  S := TStringList.Create;
+  S.Add('');
+  for j:= 1 to r do
+  begin
+    S.Add('');
+    for i:= 1 to c do
+      try
+        if sheet.cells[j,i].text <> '' then
+            str := sheet.cells[j,i].text + #$9
+         else
+            str := ' '+ #$9;
+
+         S[S.Count-1] :=  S[S.Count-1] + str;
+      except
+      end;
+  end;
+
+
+  ExlApp.Quit;
+
+  ExlApp := Unassigned;
+  Sheet  := Unassigned;
+
+  S.SaveToFile('Data\Temp.txt');
+  S.Free;
+end;
+
+function GetCols(str, sep: string; ColN, ColCount:integer; ChangeSep:Boolean): string;
+  var j,stl,b :integer;
+  begin
+
+    Result:='';
+    stl:=0;
+    b:=1;
+
+    for j:=1 to length(Str)+1 do
+    Begin
+
+      if ((copy(Str,j,1)=sep)or(j=length(Str)+1))and(copy(Str,j-1,1)<>sep) then
+      begin
+
+       if (stl>=ColN) and (Stl<ColN+ColCount) then
+       Begin
+        if result='' then
+          Result:=(Copy(Str,b,j-b))
+            else
+              Result:=Result+' '+(Copy(Str,b,j-b));
+       End;
+
+       inc(stl);
+       b:=j+1;
+
+       if stl>ColN+ColCount then
+          break;
+      end;
+
+    End;
+
+    if ChangeSep then
+    Begin
+      if result <> '' then
+        for j:= 1 to length(Result)+1 do
+          if ((Result[j] = '.') or (Result[j] = ','))and(Result[j]<>sep) then
+             Result[j] := DecimalSeparator;
+    End;
+end;
+
+function ReplaceCols(str, sep: string; ColN, ColCount:integer; newcol:string): string;
+  var j,stl,b, s1, s2 :integer;
+  begin
+
+    Result:='';
+    stl:=0;
+    b:=1;
+    s1 := -1;
+    for j:=1 to length(Str)+1 do
+    Begin
+
+      if ((copy(Str,j,1)=sep)or(j=length(Str)+1))and(copy(Str,j-1,1)<>sep) then
+      begin
+
+       if (stl>=ColN) and (Stl<ColN+ColCount) then
+       Begin
+         if s1 = -1 then
+           s1 := b;
+         s2 := j-s1;
+
+       { if result='' then
+          Result:=(Copy(Str,b,j-b))
+            else
+              Result:=Result+' '+(Copy(Str,b,j-b));}
+       End;
+
+       inc(stl);
+       b:=j+1;
+
+       if stl>ColN+ColCount then
+          break;
+      end;
+
+    End;
+
+    
+
+    if s1 <> -1 then
+    Begin
+      Delete(Str, s1, s2); //Delete(Str,s1,s2);
+      Insert(NewCol,Str,s1);
+    End;
+
+    result := Str;
+
+   { if result <> '' then
+      for j:= 1 to length(Result)+1 do
+        if ((Result[j] = '.') or (Result[j] = ','))and(Result[j]<>sep) then
+           Result[j] := DecimalSeparator;}
+
+end;
+
+
+procedure TForm1.Button1Click(Sender: TObject);
+var SK1, SK2 : Integer;
+    zone : Integer;
+    b1, l1, b2, l2, h2, h1, x, y: Double;
+    South : boolean;
+begin
+
+  SK1 := FindDatum('WGS84');
+  SK2 := FindDatum('SK42');
+
+  Label6.Caption := IntToStr(Sk1)+'    '+  IntTostr(Sk2);
+
+
+  b1 := StrToLatLon(edit1.text, true);
+  l1 := StrToLatLon(edit2.text, false);
+
+  South := b1 < 0;
+
+  CheckBox3.Checked := South;
+
+  h1 := StrToFloat2(edit5.text);
+
+  Label4.Caption := FloatToStr(b1)+'    '+ FloatToStr(l1);
+
+  Geo1ToGeo2(b1, l1, h1, SK1, SK2, b2, l2, h2);
+
+  Edit3.Text := DegToDMS(b2, true, DMSMode, not ShowLitera.Checked, psz) ;   // NEW 25.06
+  Edit4.Text := DegToDMS(l2, false, DMSMode, not ShowLitera.Checked, psz) ;  // NEW 25.06
+  Edit6.Text := format('%3f',[h2]) ;
+
+  Label1.Caption := Degtodms(b2, DMSMode)+'    '+  Degtodms(l2,DMSMode) +'   '+format('%.3f',[h2]);
+
+
+  GeoToGaussKruger(SK2, b2,l2,x,y,zone,true);
+
+  Label2.Caption := format('Gauss '+ '%3f',[x])+'   '+  format('%3f',[y])+'  ' + format('%3f',[h2]);
+
+  Edit7.Text := format('%3f',[x]) ;
+  Edit8.Text := format('%3f',[y]) ;
+
+  GeoToUTM (Sk1, b1, l1, (b1<0), x, y, zone,true);
+
+  Label3.Caption := 'UTM '+ format('%3f',[y])+'   '+  format('%3f',[x])+'  ' + format('%3f',[h2])+ ' '+ IntTostr(Zone);
+
+  Edit9.Text := FloatTostr(x) ;
+  Edit10.Text := FloatTostr(y) ;
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var SK1, SK2 : Integer;
+    b1, l1, b2, l2, h2, h1 : Double;
+begin
+
+  SK1 := FindDatum('WGS84');
+  SK2 := FindDatum('SK42');
+
+  Label6.Caption := IntToStr(Sk1)+'    '+  IntTostr(Sk2);
+
+  b1 := StrToLatLon(edit3.text, true);
+  l1 := StrToLatLon(edit4.text, false);
+  h1 := StrToFloat2(edit6.text);
+
+  Geo1ToGeo2(b1, l1, h1, SK2, SK1, b2, l2, h2);
+  Label1.Caption := Degtodms(b2, DMSMode)+'    '+  Degtodms(l2, DMSMode) +'   '+format('%.3f',[h2]);
+
+  Edit1.Text := Degtodms(b2, true, DMSMode, not ShowLitera.Checked, psz);   /// NEW 25.06
+  Edit2.Text := Degtodms(l2, false, DMSMode, not ShowLitera.Checked, psz);
+  Edit5.Text := format('%.3f',[h2]);
+end;
+
+procedure TForm1.Button10Click(Sender: TObject);
+var SK1 : Integer;
+    b1, l1, h1, xx,yy : Double;
+begin
+
+  SK1 := FindDatum('WGS84');
+
+  Label6.Caption := IntToStr(Sk1);
+
+  xx := StrToFloat2(edit9.text);
+  yy := StrToFloat2(edit10.text);
+  h1 := StrToFloat2(edit5.text);
+
+  UTMToGeo(SK1,xx,yy,CheckBox3.Checked,b1,l1);
+
+
+  Label1.Caption := Degtodms(b1, DMSMode)+'    '+  Degtodms(l1, DMSMode) +'   '+format('%.3f',[h1]);
+
+  Edit1.Text := Degtodms(b1, true, DMSMode, not ShowLitera.Checked);
+  Edit2.Text := Degtodms(l1, false, DMSMode, not ShowLitera.Checked);
+  Edit5.Text := FloatToStr(h1);
+
+end;
+
+procedure TForm1.ListBox1Click(Sender: TObject);
+var i, j :integer;
+begin
+  if ListBox1.ItemIndex>=0 then
+  Begin
+
+    i:= FindDatumByCaption(ListBox1.Items[ListBox1.ItemIndex]);
+
+    if i=-1 then
+      exit;
+
+    RadioGroup1.ItemIndex := 0;
+    RadioGroup1.Buttons[2].Enabled := false;
+    RadioGroup1.Buttons[3].Enabled := false;
+    RadioGroup1.Buttons[4].Enabled := false;
+    for j:=0 to length(DatumList[i].Projections)-1 Do
+    begin
+      if DatumList[i].Projections[j]='Gauss' then
+         RadioGroup1.Buttons[2].Enabled := true;
+      if DatumList[i].Projections[j]='UTM' then
+      begin
+         RadioGroup1.Buttons[3].Enabled := true;
+         RadioGroup1.Buttons[4].Enabled := true;
+      end;
+    end;
+
+   { Memo1.clear;
+    Memo1.Lines.Add(DatumList[i].Name);
+    Memo1.Lines.Add(DatumList[i].Caption);
+    Memo1.Lines.Add('');
+    Memo1.Lines.Add('Ёллипсоид:');
+    //Memo1.Lines.Add(DatumList[i].Ellipsoid.name);
+    Memo1.Lines.Add(DatumList[i].Ellipsoid.Caption);
+    Memo1.Lines.Add('');
+    Memo1.Lines.Add('—в€зь с:');            }
+  {  For j := 0 to Length(DatumList[i].ConvertData)-1 do
+    Begin
+      //Memo1.Lines.Add(DatumList[i].ConvertData[j].ConvertDatumName);
+      k := FindDatum(DatumList[i].ConvertData[j].ConvertDatumName);
+      if k<>-1 then
+      ListBox2.Items.Add(DatumList[k].Caption);
+    End;
+      /// ѕќ»—  —¬я«јЌЌџ’ — 
+
+      for l := 0 to Length(DatumList)-1 do
+        for m := 0 to Length(DatumList[l].ConvertData)-1 do
+          if DatumList[l].ConvertData[m].ConvertDatumName = DatumList[i].Name then
+          begin
+            AlreadyHas := false;
+            for k:= 0 to ListBox2.Items.Count-1 do
+              if DatumList[l].Caption = ListBox2.Items[k] then
+              begin
+                AlreadyHas :=true;
+                break;
+              end;
+            if not AlreadyHas then
+              ListBox2.Items.Add(DatumList[l].Caption);
+          end;
+    
+      ListBox2.OnChange(nil); }
+  End;
+end;
+
+procedure TForm1.FormActivate(Sender: TObject);
+var I:Integer;
+begin
+  if not Inited then
+  Try
+     Repaint;
+     Init;
+     LoadLang(True);
+     ReInit;
+     Repaint;
+     for I := 0 to LangBox.Items.Count do
+       if LangBox.Items[I] = Lang then
+       Begin
+         LangBox.ItemIndex := I;
+         break;
+       End;
+  Finally
+     Panel2.Hide;
+     FindWGS;
+  End;
+end;
+
+procedure TForm1.ListBox2Click(Sender: TObject);
+var i, j :integer;
+begin
+if ListBox2.ItemIndex>=0 then
+  Begin
+
+    i:= FindDatumByCaption(ListBox2.Items[ListBox2.ItemIndex]);
+
+    RadioGroup2.ItemIndex := 0;
+    RadioGroup2.Buttons[2].Enabled := false;
+    RadioGroup2.Buttons[3].Enabled := false;
+    RadioGroup2.Buttons[4].Enabled := false;
+    for j:=0 to length(DatumList[i].Projections)-1 Do
+    begin
+      if DatumList[i].Projections[j]='Gauss' then
+         RadioGroup2.Buttons[2].Enabled := true;
+      if DatumList[i].Projections[j]='UTM' then
+      begin
+         RadioGroup2.Buttons[3].Enabled := true;
+         RadioGroup2.Buttons[4].Enabled := true;
+      end;
+    end;
+
+  End;
+end;
+
+procedure TForm1.Button4Click(Sender: TObject);
+
+var S, S2 : TStringList;
+    i:integer;
+begin
+   S:= TStringList.Create;
+   S2:= TStringList.Create;
+
+   S.LoadFromFile('Test3.txt');
+   for i:= 0 to S.count-1 do
+   Begin
+    Edit1.Text := GetCols(s[i],';',1,1,true);
+    Edit2.Text := GetCols(s[i],';',2,1,true);
+    Edit5.Text := GetCols(s[i],';',3,1,true);
+    Button1.OnClick(nil);
+
+    S2.Add(GetCols(s[i],';',0,1,true)+'  '+label2.Caption);
+   end;
+   S2.SaveToFile('TestRes3.txt');
+   S.Destroy;
+   S2.Destroy;
+end;
+
+procedure TForm1.RadioGroup1Click(Sender: TObject);
+begin
+  RenameTabs(StringGrid1,RadioGroup1.ItemIndex);
+
+  if RadioGroup1.ItemIndex >= 2 then
+    Begin
+      CheckBox1.Visible := true;
+      SpinEdit1.Visible := CheckBox1.Checked;
+      Label5.Visible := SpinEdit1.Visible;
+    End
+     else
+      Begin
+        CheckBox1.Visible := false;
+        SpinEdit1.Visible := false;
+        Label5.Visible := SpinEdit1.Visible;
+      End
+end;
+
+procedure TForm1.RenameTabs(StringGrid: TStringGrid; TabNameStyle: byte);
+begin
+  case TabNameStyle of
+    4: begin
+      StringGrid.Cells[0,0] := Inf[11];
+      StringGrid.Cells[1,0] := Inf[6];
+      StringGrid.Cells[2,0] := Inf[9];
+      StringGrid.Cells[3,0] := inf[17];
+    end;
+
+    3: begin
+      StringGrid.Cells[0,0] := Inf[11];
+      StringGrid.Cells[2,0] := Inf[10];
+      StringGrid.Cells[1,0] := Inf[5];
+      StringGrid.Cells[3,0] := Inf[17];
+    end;
+
+    2: begin
+      StringGrid.Cells[0,0] := Inf[11];
+      StringGrid.Cells[1,0] := Inf[5];
+      StringGrid.Cells[2,0] := Inf[10];
+      StringGrid.Cells[3,0] := Inf[17];
+    end;
+
+    1: begin
+      StringGrid.Cells[0,0] := Inf[11];
+      StringGrid.Cells[1,0] := Inf[2];
+      StringGrid.Cells[2,0] := Inf[3];
+      StringGrid.Cells[3,0] := Inf[4];
+    end;
+
+    0: begin
+      StringGrid.Cells[0,0] := Inf[11];
+      StringGrid.Cells[1,0] := Inf[0]+#176;
+      StringGrid.Cells[2,0] := Inf[1]+#176;
+      StringGrid.Cells[3,0] := Inf[17];
+    end;
+  end;
+end;
+
+procedure TForm1.RadioGroup2Click(Sender: TObject);
+begin
+
+    if RadioGroup2.ItemIndex >= 2 then
+    Begin
+      CheckBox2.Visible := true;
+      SpinEdit2.Visible := CheckBox2.Checked;
+      Label7.Visible := SpinEdit2.Visible;
+    End
+     else
+      Begin
+        CheckBox2.Visible := false;
+        SpinEdit2.Visible := false;
+        Label7.Visible := SpinEdit2.Visible;
+      End;
+
+    RenameTabs(StringGrid2,RadioGroup2.ItemIndex);
+end;
+
+procedure TForm1.SpeedButton7Click(Sender: TObject);
+begin
+ if Panel1.Width >= 710 then
+   Panel1.Width := 10
+    else
+      Panel1.Width := Panel1.Width+250;
+end;
+
+procedure TForm1.StringGrid1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if (Key= vk_Tab) or (Key = vk_Return) then
+   TabStringGrid(StringGrid1);
+ if (Key= vk_Delete) or (Key = vk_Back) then
+   DelStringGrid(StringGrid1);
+end;
+
+procedure TForm1.SpeedButton5Click(Sender: TObject);
+begin
+ ClearGrid(StringGrid1);
+end;
+
+procedure TForm1.ClearGrid(StringGrid: TStringGrid);
+var i, j: Integer;
+begin
+  with StringGrid do
+  begin
+    for i:=1 to RowCount-1 do
+    for j:=0 to ColCount-1 do
+      Cells[j, i]:='';
+    StringGrid.RowCount := 2;
+  end;
+end;
+
+procedure TForm1.SpeedButton6Click(Sender: TObject);
+begin
+ ClearGrid(StringGrid2);
+end;
+
+procedure TForm1.TabStringGrid(StringGrid: TStringGrid);
+begin
+  with StringGrid do
+  if Col < ColCount-1 then
+    Col:=Col+1
+    else
+    begin
+      Col:=0;
+      if Row >= RowCount-1 then
+        RowCount := RowCount +1;
+      Row:=Row+1;
+    end;
+
+     // StringGrid.fo
+end;
+
+procedure TForm1.StringGrid2KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (Key= vk_Tab)or(Key=vk_return) then
+   TabStringGrid(StringGrid2);
+  if (Key= vk_Delete) or (Key = vk_Back) then
+   DelStringGrid(StringGrid2);
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+var i: integer;
+begin
+//  StringGrid1.Options:=StringGrid1.Options+[goEditing];
+   Application.HintPause :=0;
+   Application.OnShowHint := OnShowHint;
+   MyDir := GetCurrentDir;
+   
+   i:=1;
+   while ParamStr(i)<>'' do
+   Begin
+     if ParamStr(i)='-dev' then
+     Begin
+        Panel1.Visible := true;
+        if DecimalSeparator <> RS.Items[RS.ItemIndex] then
+           DecimalSeparator := RS.Items[RS.ItemIndex][1];
+     End;
+
+     inc(i);
+   End;
+
+   if DecimalSeparator=',' then
+     RS1.Checked := true
+      else RS2.Checked := true;
+end;
+
+procedure TForm1.SpeedButton10Click(Sender: TObject);
+begin
+   Form8.ShowModal;
+end;
+
+procedure TForm1.SpeedButton1Click(Sender: TObject);
+var S:TSTringList;
+
+begin
+  if OpenDialog1.Execute then
+  begin
+
+     Form2.ComboBox1.Items := ListBox1.Items;
+     Form2.ComboBox1.ItemIndex := ListBox1.ItemIndex;
+     Form2.ComboBox1.OnChange(nil);
+     Form2.RadioGroup2.OnClick(nil);
+
+     Form2.ComboBox2.ItemIndex := ComboBox1.ItemIndex;
+     Form2.ComboBox2.OnChange(nil);
+     Form2.ListBox4.ItemIndex := ListBox4.ItemIndex;
+     Form2.ListBox4.OnClick(nil);
+     Form2.PageControl1.ActivePageIndex := PageControl1.ActivePageIndex;
+
+     SetCurrentDir(MyDir);
+     OpenFileName := OpenDialog1.FileName;
+     if Pos('xls', AnsiLowerCase(ExtractFileExt(OpenFileName))) > 0 then
+     begin
+       XlsToTXT(OpenFileName);
+       OpenFileName := 'Data\Temp.txt';
+       Form2.RadioGroup1.ItemIndex := 1;
+     end;
+
+     Form2.Showmodal;
+
+
+     if CanLoad then
+     begin
+        PageControl1.ActivePageIndex := Form2.PageControl1.ActivePageIndex;
+        if PageControl1.ActivePageIndex = 0 then
+        begin
+          ListBox1.ItemIndex := Form2.ComboBox1.ItemIndex;
+          RadioGroup1.ItemIndex := Form2.RadioGroup2.ItemIndex;
+        end
+          else
+          begin
+             ComboBox1.ItemIndex := Form2.ComboBox2.ItemIndex;
+             ComboBox1.OnChange(nil);
+             ListBox4.ItemIndex := Form2.ListBox4.ItemIndex;
+             ListBox4.OnClick(nil);
+          end;  
+
+        S:= TSTringList.Create;
+        S.LoadFromFile(OpenFileName);
+
+
+        OpenTable(StringGrid1,S);
+        S.Destroy;
+     end;
+  end;
+end;
+
+procedure TForm1.OpenTable(StringGrid: TStringGrid; S: TStringList);
+var i, j : integer;
+    Sep : String;
+begin
+   ClearGrid(StringGrid);
+   StringGrid.Visible :=false;
+   for i:= Form2.SpinEdit1.Value-1 to S.count-1 do
+   Begin
+     if i<0 then
+       continue;
+
+     with StringGrid do
+       if i >= RowCount-2 then
+         RowCount := i+2-(Form2.SpinEdit1.Value-1);
+
+     case Form2.RadioGroup1.ItemIndex of
+        0: sep:=' ';
+        1: sep:=#$9;
+        2: sep:=Form2.Edit1.Text[1];
+        3: sep:=';';
+        4: sep:=',';
+     end;
+     for j:= 0 to 3 do
+       StringGrid.Cells[j,i+1-(Form2.SpinEdit1.Value-1)] := GetCols(s[i],sep, StrToInt(Form2.ValueList.Cells[1,j+1])-1,1, j>0);
+
+   end;
+   StringGrid.FixedRows := 1;
+     StringGrid.Visible :=true;
+end;
+
+procedure TForm1.SpeedButton4Click(Sender: TObject);
+var S : TStringList;
+begin
+  if OpenDialog1.Execute then
+  begin
+
+     Form2.ComboBox1.Items := ListBox2.Items;
+     Form2.ComboBox1.ItemIndex := ListBox2.ItemIndex;
+     Form2.ComboBox1.OnChange(nil);
+     Form2.RadioGroup2.ItemIndex := RadioGroup2.ItemIndex;
+
+     Form2.ComboBox2.ItemIndex := ComboBox2.ItemIndex;
+     Form2.ComboBox2.OnChange(nil);
+     Form2.ListBox4.ItemIndex := ListBox5.ItemIndex;
+     Form2.ListBox4.OnClick(nil);
+     Form2.PageControl1.ActivePageIndex := PageControl1.ActivePageIndex;
+
+     if PageControl1.ActivePageIndex = 0 then
+           Form2.RadioGroup2.OnClick(nil);
+
+     SetCurrentDir(MyDir);
+     OpenFileName := OpenDialog1.FileName;
+     if Pos('xls', AnsiLowerCase(ExtractFileExt(OpenFileName))) > 0 then
+     begin
+       XlsToTXT(OpenFileName);
+       OpenFileName := 'Data\Temp.txt';
+       Form2.OnShow(nil);
+       Form2.RadioGroup1.ItemIndex := 1;
+     end;
+
+     Form2.Showmodal;
+     if CanLoad then
+     begin
+        PageControl1.ActivePageIndex := Form2.PageControl1.ActivePageIndex;
+        if PageControl1.ActivePageIndex = 0 then
+        begin
+          ListBox2.ItemIndex := Form2.ComboBox1.ItemIndex;
+          RadioGroup2.ItemIndex := Form2.RadioGroup2.ItemIndex;
+        end
+          else
+          begin
+             ComboBox2.ItemIndex := Form2.ComboBox2.ItemIndex;
+             ComboBox2.OnChange(nil);
+             ListBox5.ItemIndex := Form2.ListBox4.ItemIndex;
+             ListBox5.OnClick(nil);
+          end;  
+        S:= TSTringList.Create;
+        S.LoadFromFile(OpenFileName);
+        OpenTable(StringGrid2,S);
+        S.Destroy;
+     end;
+  end;
+end;
+
+function MyFormat(D:Double):string;
+begin
+ case psz of
+      0: result := IntToStr(round(D));
+      1: result := format('%.1f',[D]);
+      2: result := format('%.2f',[D]);
+      3: result := format('%.3f',[D]);
+      4: result := format('%.4f',[D]);
+      5: result := format('%.5f',[D]);
+      6: result := format('%.6f',[D]);
+      7: result := format('%.7f',[D]);
+      8: result := format('%.8f',[D]);
+      9: result := format('%.9f',[D]);
+      10: result := format('%.10f',[D]);
+      11: result := format('%.11f',[D]);
+      12: result := format('%.12f',[D]);
+      13: result := format('%.13f',[D]);
+      14: result := format('%.14f',[D]);
+      15: result := format('%.15f',[D]);
+      16: result := format('%.16f',[D]);
+    end;
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+var SK1, SK2, Dat1, Dat2, i, Zone2 :integer;
+    B1, L1, X1, Y1, H1, B2, L2, X2, Y2, H2 : Double;
+
+    WB, WL, WH, dH, dEll : Double; WGS84, GN:Integer;
+
+    AutoZone2, South : Boolean;
+begin
+
+{NEW 21.06 --------------------------------------------------------------------}
+   if Length(GeoidList) < 2 then
+      SetLength(GeoidList, 2);
+
+   StatusBar1.SimpleText := inf[62];
+   SetCurrentDir(MyDir);
+
+   if Geoid1.ItemIndex > 0 then
+   begin
+      GN := FindGeoidMetaByCaption(Geoid1.Items[Geoid1.ItemIndex]);
+      if GN <> -1 then
+      if GeoidList[0].NameID <>  GeoidsMetaData[GN].NameID then
+        ReloadGeoid(GeoidDir + GeoidsMetaData[GN].FileName, 0);
+   end;
+   if Geoid2.ItemIndex > 0 then
+   begin
+      GN := FindGeoidMetaByCaption(Geoid2.Items[Geoid2.ItemIndex]);
+      if GN <> -1 then
+      if GeoidList[1].NameID <>  GeoidsMetaData[GN].NameID then
+        ReloadGeoid(GeoidDir + GeoidsMetaData[GN].FileName, 1);
+   end;
+{------------------------------------------------------------------------------}
+
+   ProgressBar1.Position := 0;
+   ProgressBar1.Visible := true;
+   StatusBar1.SimpleText := inf[63];
+   if PageControl1.ActivePageIndex = 0 then
+   Begin
+
+      SK1 := FindDatumByCaption(ListBox1.Items[ListBox1.ItemIndex]);
+      SK2 := FindDatumByCaption(ListBox2.Items[ListBox2.ItemIndex]);
+
+      South := RadioGroup1.ItemIndex = 4;
+
+      Autozone2 := true;
+      if SpinEdit2.Visible then
+      Begin
+        Autozone2 := false;
+        Zone2 := SpinEdit2.Value;
+      End;
+
+      if (SK1 = -1) or (SK2 = -1) then
+          exit;
+
+      ClearGrid(StringGrid2);
+      StringGrid2.Visible := false;
+
+      for i := 1 to StringGrid1.RowCount-1 do
+      Begin
+           if round(i/StringGrid1.RowCount*100) > ProgressBar1.Position +1 then
+           begin
+             ProgressBar1.Position := round(i/StringGrid1.RowCount*100);
+             ProgressBar1.Repaint;
+           end;
+           
+           with StringGrid2 do
+             if i >= RowCount-2 then
+              RowCount := i+1;
+
+            case RadioGroup1.ItemIndex of
+            3,4 : begin
+              X1 := StrToFloat2(StringGrid1.Cells[1,i]);
+              Y1 := StrToFloat2(StringGrid1.Cells[2,i]);
+              H1 := StrToFloat2(StringGrid1.Cells[3,i]);
+              if CheckBox1.Checked then
+                UTMToGeo(SK1,X1,Y1,South,SpinEdit1.Value,B1,L1)
+                 else
+                  UTMToGeo(SK1,X1,Y1,South,B1,L1);
+            end;
+
+            2 : begin
+              X1 := StrToFloat2(StringGrid1.Cells[1,i]);
+              Y1 := StrToFloat2(StringGrid1.Cells[2,i]);
+              H1 := StrToFloat2(StringGrid1.Cells[3,i]);
+              if CheckBox1.Checked then
+                 GaussKrugerToGeo(SK1, X1, Y1, SpinEdit1.Value, B1, L1)
+                else
+                 GaussKrugerToGeo(SK1, X1, Y1, B1, L1);
+            end;
+
+            1 : begin
+              X1 := StrToFloat2(StringGrid1.Cells[1,i]);
+              Y1 := StrToFloat2(StringGrid1.Cells[2,i]);
+              H1 := StrToFloat2(StringGrid1.Cells[3,i]);
+              ECEFToGeo(SK1,X1,Y1,H1,B1,L1,H1);
+            end;
+
+            0 : begin
+              B1 := StrToLatLon(StringGrid1.Cells[1,i], true);
+              L1 := StrToLatLon(StringGrid1.Cells[2,i], false);
+              H1 := StrToFloat2(StringGrid1.Cells[3,i]);
+            end;
+        end;
+
+{NEW 21.06 --------------------------------------------------------------------}
+        if Geoid1.ItemIndex > 0 then
+        Begin
+          WGS84 := FindDatum('WGS84');
+          Geo1ForceToGeo2(B1, L1, H1, SK1, WGS84, WB, WL, WH);
+          {определ€ю координаты в WGS дл€ выбора точки на модели геоида}
+          dH   := GetGeoidH(0, WB, WL);
+          dEll := H1 - WH;
+          H1   := H1 + dEll + dH;
+        End;
+{------------------------------------------------------------------------------}
+
+        if SK1<>SK2 then
+        begin
+            if i  =  StringGrid1.RowCount-1 then
+            StatusBar1.SimpleText := Geo1ForceToGeo2(B1, L1, H1, SK1, SK2, B2, L2, H2)
+               else   Geo1ForceToGeo2(B1, L1, H1, SK1, SK2, B2, L2, H2);
+        end else
+        Begin
+          B2 := B1;
+          L2 := L1;
+          H2 := H1;
+
+          if i  =  StringGrid1.RowCount-1 then
+            StatusBar1.SimpleText :=  SuccessStr;
+        End;
+
+        StringGrid2.Cells[0,i] := StringGrid1.Cells[0,i];
+
+{NEW 21.06 --------------------------------------------------------------------}
+        if Geoid2.ItemIndex > 0 then
+        Begin
+          WGS84 := FindDatum('WGS84');
+          Geo1ForceToGeo2(B2, L2, H2, SK2, WGS84, WB, WL, WH);
+          {определ€ю координаты в WGS дл€ выбора точки на модели геоида}
+          dH   := GetGeoidH(1, WB, WL);
+          dEll := H2 - WH;
+          H2   := H2 - dEll - dH;
+        End;
+{------------------------------------------------------------------------------}
+
+        case RadioGroup2.ItemIndex of
+          3,4 : begin
+            South := RadioGroup2.ItemIndex =4;
+            GeoToUTM(SK2, B2,L2, South, X2, Y2, Zone2, Autozone2);
+
+            StringGrid2.Cells[1,i] := format('%.3f',[x2]);
+            StringGrid2.Cells[2,i] := format('%.3f',[y2]);
+            StringGrid2.Cells[3,i] := format('%.3f',[h2]);
+
+            if psz >= 0 then       //  NEW 25.06
+            begin
+               StringGrid2.Cells[1,i] := myformat(x2);
+               StringGrid2.Cells[2,i] := myformat(y2);
+               StringGrid2.Cells[3,i] := myformat(h2);
+            end;
+          end;
+
+          2 : begin
+            GeoToGaussKruger(SK2, B2, L2, X2, Y2, Zone2, Autozone2);
+
+            StringGrid2.Cells[1,i] := format('%.3f',[x2]);
+            StringGrid2.Cells[2,i] := format('%.3f',[y2]);
+            StringGrid2.Cells[3,i] := format('%.3f',[h2]);
+
+            if psz >= 0 then    //  NEW 25.06
+            begin
+               StringGrid2.Cells[1,i] := myformat(x2);
+               StringGrid2.Cells[2,i] := myformat(y2);
+               StringGrid2.Cells[3,i] := myformat(h2);
+            end;
+         end;
+          1 : begin
+            GeoToECEF(SK2, B2, L2, H2, X2, Y2, H2);
+
+            StringGrid2.Cells[1,i] := format('%.3f',[x2]);
+            StringGrid2.Cells[2,i] := format('%.3f',[y2]);
+            StringGrid2.Cells[3,i] := format('%.3f',[h2]);
+
+            if psz >= 0 then     //  NEW 25.06
+            begin
+               StringGrid2.Cells[1,i] := myformat(x2);
+               StringGrid2.Cells[2,i] := myformat(y2);
+               StringGrid2.Cells[3,i] := myformat(h2);
+            end;
+          end;
+          0 : begin
+              StringGrid2.Cells[1,i] := DegToDMS(B2, true, DMSMode, not ShowLitera.Checked, psz); //  NEW 25.06
+              StringGrid2.Cells[2,i] := DegToDMS(L2, false, DMSMode, not ShowLitera.Checked, psz);
+              StringGrid2.Cells[3,i] := format('%.3f',[h2]);
+          end;
+        end;
+
+        if CheckBox4.Checked then
+          if (RadioGroup2.ItemIndex <> 1) and (RadioGroup1.ItemIndex<>1) then
+            StringGrid2.Cells[3,i] := format('%.3f',[StrToFloat2(StringGrid1.Cells[3,i])]);
+    End;
+    StringGrid2.Visible := true;
+   end
+   Else
+   Begin
+    StringGrid2.Visible := false;
+    try
+      SK1 := FindCoordinateSystemByCaption(ListBox4.Items[ListBox4.ItemIndex]);
+      SK2 := FindCoordinateSystemByCaption(ListBox5.Items[ListBox5.ItemIndex]);
+
+      Dat1 := CoordinateSystemList[SK1].DatumN;
+      Dat2 := CoordinateSystemList[SK2].DatumN;
+    except
+      exit;
+    end;
+
+     for i := 1 to StringGrid1.RowCount-1 do
+      Begin
+        ProgressBar1.Position := round(i/StringGrid1.RowCount*100);
+        ProgressBar1.Repaint;
+        with StringGrid2 do
+           if i >= RowCount-2 then
+              RowCount := i+1;
+
+        if CoordinateSystemList[SK1].ProjectionType=0 then
+        Begin
+          X1 := StrToLatLon(StringGrid1.Cells[1,i], true);
+          Y1 := StrToLatLon(StringGrid1.Cells[2,i], false);
+          H1 := StrToFloat2(StringGrid1.Cells[3,i]);
+        End
+         else
+           Begin
+              X1 := StrToFloat2(StringGrid1.Cells[1,i]);
+              Y1 := StrToFloat2(StringGrid1.Cells[2,i]);
+              H1 := StrToFloat2(StringGrid1.Cells[3,i]);
+           End;
+        CoordinateSystemToDatum(SK1, x1, y1, h1, B1, L1, H1);
+
+        {из геоида в эллипсоидальные}
+{NEW 21.06 --------------------------------------------------------------------}
+        if Geoid1.ItemIndex > 0 then
+        Begin
+          WGS84 := FindDatum('WGS84');
+          Geo1ForceToGeo2(B1, L1, H1, Dat1, WGS84, WB, WL, WH);
+          {определ€ю координаты в WGS дл€ выбора точки на модели геоида}
+          dH   := GetGeoidH(0, WB, WL);
+          dEll := H1 - WH;
+          H1   := H1 + dEll + dH;
+        End;
+{------------------------------------------------------------------------------}
+
+        {√Ћј¬Ќќ≈!}
+        if i  =  StringGrid1.RowCount-1 then
+        StatusBar1.SimpleText := Geo1ForceToGeo2(b1, l1, h1, Dat1, Dat2, b2, l2, h2)
+           else
+             Geo1ForceToGeo2(b1, l1, h1, Dat1, Dat2, b2, l2, h2);
+
+        {из эллипсоидальных в геоид}
+
+{NEW 21.06 --------------------------------------------------------------------}
+        if Geoid2.ItemIndex > 0 then
+        Begin
+          WGS84 := FindDatum('WGS84');
+          Geo1ForceToGeo2(B2, L2, H2, Dat2, WGS84, WB, WL, WH);
+          {определ€ю координаты в WGS дл€ выбора точки на модели геоида}
+          dH   := GetGeoidH(1, WB, WL);
+          dEll := H2 - WH;
+          H2   := H2 - dEll - dH;
+        End;
+{------------------------------------------------------------------------------}
+
+        DatumToCoordinateSystem(SK2, B2, L2, H2, x2, y2, h2);
+
+        StringGrid2.Cells[0,i] := StringGrid1.Cells[0,i];
+        if not (CoordinateSystemList[SK2].ProjectionType = 0) then
+        begin
+           StringGrid2.Cells[1,i] := format('%.3f',[x2]);
+           StringGrid2.Cells[2,i] := format('%.3f',[y2]);
+           StringGrid2.Cells[3,i] := format('%.3f',[h2]);
+
+           if psz >= 0 then        //  NEW 25.06
+           begin
+               StringGrid2.Cells[1,i] := myformat(x2);
+               StringGrid2.Cells[2,i] := myformat(y2);
+               StringGrid2.Cells[3,i] := myformat(h2);
+           end;
+
+        end
+          else
+           begin
+              StringGrid2.Cells[1,i] := DegToDMS(b2, true, DMSMode, not ShowLitera.Checked, psz);  //  NEW 25.06
+              StringGrid2.Cells[2,i] := DegToDMS(l2, false, DMSMode, not ShowLitera.Checked, psz);
+              StringGrid2.Cells[3,i] := format('%.3f',[h2]);
+           end;
+
+      if CheckBox4.Checked then
+          if (CoordinateSystemList[SK1].ProjectionType <> 1) and
+             (CoordinateSystemList[SK2].ProjectionType <>1) then
+                StringGrid2.Cells[3,i] := format('%.3f',[StrToFloat2(StringGrid1.Cells[3,i])]);
+
+   End;
+   StringGrid2.Visible := true;
+  end;
+  if StringGrid2.RowCount > StringGrid1.RowCount  then
+     StringGrid2.RowCount := StringGrid1.RowCount;
+
+  ProgressBar1.Visible := false;
+end;
+
+procedure TForm1.CheckBox1Click(Sender: TObject);
+begin
+  SpinEdit1.Visible := CheckBox1.Checked;
+  Label5.Visible := SpinEdit1.Visible; 
+end;
+
+procedure TForm1.CheckBox2Click(Sender: TObject);
+begin
+  SpinEdit2.Visible := CheckBox2.Checked;
+  Label7.Visible := SpinEdit2.Visible;
+end;
+
+procedure TForm1.Button6Click(Sender: TObject);
+var SK1, SK2, i, Zone2, Dat1, Dat2 :integer;
+    B1, L1, X1, Y1, H1, B2, L2, X2, Y2, H2 : Double;
+
+    WB, WL, WH, dH, dEll : Double; WGS84, GN:Integer;
+
+    AutoZone2, South : Boolean;
+begin
+
+{NEW 21.06 --------------------------------------------------------------------}
+   if Length(GeoidList) < 2 then
+     SetLength(GeoidList, 2);
+
+   StatusBar1.SimpleText := inf[62];
+   SetCurrentDir(MyDir);
+   
+   if Geoid1.ItemIndex > 0 then
+   begin
+      GN := FindGeoidMetaByCaption(Geoid1.Items[Geoid1.ItemIndex]);
+      if GN <> -1 then
+      if GeoidList[0].NameID <>  GeoidsMetaData[GN].NameID then
+         ReloadGeoid(GeoidDir + GeoidsMetaData[GN].FileName, 0);
+   end;
+   if Geoid2.ItemIndex > 0 then
+   begin
+      GN := FindGeoidMetaByCaption(Geoid2.Items[Geoid2.ItemIndex]);
+      if GN <> -1 then
+      if GeoidList[1].NameID <>  GeoidsMetaData[GN].NameID then
+          ReloadGeoid(GeoidDir + GeoidsMetaData[GN].FileName, 1);
+   end;
+{------------------------------------------------------------------------------}
+
+  ProgressBar2.Position := 0;
+  ProgressBar2.Visible := true;
+  StatusBar1.SimpleText := inf[63];
+  if  PageControl1.ActivePageIndex = 0 then
+  Begin
+   SK1 := FindDatumByCaption(ListBox2.Items[ListBox2.ItemIndex]);
+   SK2 := FindDatumByCaption(ListBox1.Items[ListBox1.ItemIndex]);
+
+   South := RadioGroup2.ItemIndex =4;
+
+   Autozone2 := true;
+   if SpinEdit1.Visible then
+   Begin
+     Autozone2 := false;
+     Zone2 := SpinEdit1.Value;
+   End;
+
+   if (SK1 = -1) or (SK2 = -1) then
+      exit;
+
+   ClearGrid(StringGrid1);
+   StringGrid1.Visible := false;
+
+   for i := 1 to StringGrid2.RowCount-1 do
+   Begin
+     if round(i/StringGrid2.RowCount*100) > ProgressBar2.Position+1 then
+     begin
+       ProgressBar2.Position := round(i/StringGrid2.RowCount*100);
+       ProgressBar2.Repaint;
+     end;
+
+     with StringGrid1 do
+       if i >= RowCount-2 then
+         RowCount := i+1;
+     
+     case RadioGroup2.ItemIndex of
+       3,4 : begin
+           X1 := StrToFloat2(StringGrid2.Cells[1,i]);
+           Y1 := StrToFloat2(StringGrid2.Cells[2,i]);
+           H1 := StrToFloat2(StringGrid2.Cells[3,i]);
+           if CheckBox2.Checked then
+             UTMToGeo(SK1,X1,Y1,South,SpinEdit2.Value,B1,L1)
+               else
+                UTMToGeo(SK1,X1,Y1,South,B1,L1);
+         end;
+
+       2 : begin
+           X1 := StrToFloat2(StringGrid2.Cells[1,i]);
+           Y1 := StrToFloat2(StringGrid2.Cells[2,i]);
+           H1 := StrToFloat2(StringGrid2.Cells[3,i]);
+           if CheckBox2.Checked then
+             GaussKrugerToGeo(SK1, X1, Y1, SpinEdit2.Value, B1, L1)
+           else
+              GaussKrugerToGeo(SK1, X1, Y1, B1, L1);
+         end;
+
+       1 : begin
+           X1 := StrToFloat2(StringGrid2.Cells[1,i]);
+           Y1 := StrToFloat2(StringGrid2.Cells[2,i]);
+           H1 := StrToFloat2(StringGrid2.Cells[3,i]);
+           ECEFToGeo(SK1,X1,Y1,H1,B1,L1,H1);
+       end;
+
+       0 : begin
+           B1 := StrToLatLon(StringGrid2.Cells[1,i], true);
+           L1 := StrToLatLon(StringGrid2.Cells[2,i], false);
+           H1 := StrToFloat2(StringGrid2.Cells[3,i]);
+         end;
+     end;
+
+{NEW 21.06 --------------------------------------------------------------------}
+        if Geoid2.ItemIndex > 0 then
+        Begin
+          WGS84 := FindDatum('WGS84');
+          Geo1ForceToGeo2(B1, L1, H1, SK1, WGS84, WB, WL, WH);
+          {определ€ю координаты в WGS дл€ выбора точки на модели геоида}
+          dH   := GetGeoidH(1, WB, WL);
+          dEll := H1 - WH;
+          H1   := H1 + dEll + dH;
+        End;
+{------------------------------------------------------------------------------}
+
+     if SK1<>SK2 then
+     begin
+        if i  =  StringGrid2.RowCount-1 then
+        StatusBar1.SimpleText := Geo1ForceToGeo2(B1, L1, H1, SK1, SK2, B2, L2, H2)
+          else Geo1ForceToGeo2(B1, L1, H1, SK1, SK2, B2, L2, H2);
+     end else
+       Begin
+         B2 := B1;
+         L2 := L1;
+         H2 := H1;
+         StatusBar1.SimpleText :=  SuccessStr;
+       End;
+
+      StringGrid1.Cells[0,i] := StringGrid2.Cells[0,i];
+
+{NEW 21.06 --------------------------------------------------------------------}
+        if Geoid1.ItemIndex > 0 then
+        Begin
+          WGS84 := FindDatum('WGS84');
+          Geo1ForceToGeo2(B2, L2, H2, SK2, WGS84, WB, WL, WH);
+          {определ€ю координаты в WGS дл€ выбора точки на модели геоида}
+          dH   := GetGeoidH(0, WB, WL);
+          dEll := H2 - WH;
+          H2   := H2 - dEll - dH;
+        End;
+{------------------------------------------------------------------------------}
+
+      case RadioGroup1.ItemIndex of
+       3,4 : begin
+           South := RadioGroup1.ItemIndex =4;
+           GeoToUTM(SK2, B2,L2, South, X2, Y2, Zone2, Autozone2);
+
+           StringGrid1.Cells[1,i] := format('%.3f',[x2]);
+           StringGrid1.Cells[2,i] := format('%.3f',[y2]);
+           StringGrid1.Cells[3,i] := format('%.3f',[h2]);
+
+            if psz >= 0 then      //  NEW 25.06
+            begin
+               StringGrid2.Cells[1,i] := myformat(x2);
+               StringGrid2.Cells[2,i] := myformat(y2);
+               StringGrid2.Cells[3,i] := myformat(h2);
+            end;
+         end;
+
+       2 : begin
+           GeoToGaussKruger(SK2, B2, L2, X2, Y2, Zone2, Autozone2);
+
+           StringGrid1.Cells[1,i] := format('%.3f',[x2]);
+           StringGrid1.Cells[2,i] := format('%.3f',[y2]);
+           StringGrid1.Cells[3,i] := format('%.3f',[h2]);
+
+           if psz >= 0 then        //  NEW 25.06
+           begin
+               StringGrid2.Cells[1,i] := myformat(x2);
+               StringGrid2.Cells[2,i] := myformat(y2);
+               StringGrid2.Cells[3,i] := myformat(h2);
+           end;
+         end;
+
+       1 : begin
+           GeoToECEF(SK2, B2, L2, H2, X2, Y2, H2);
+
+           StringGrid1.Cells[1,i] := format('%.3f',[x2]);
+           StringGrid1.Cells[2,i] := format('%.3f',[y2]);
+           StringGrid1.Cells[3,i] := format('%.3f',[h2]);
+
+           if psz >= 0 then      //  NEW 25.06
+           begin
+               StringGrid2.Cells[1,i] := myformat(x2);
+               StringGrid2.Cells[2,i] := myformat(y2);
+               StringGrid2.Cells[3,i] := myformat(h2);
+           end;
+       end;
+
+       0 : begin
+           StringGrid1.Cells[1,i] := DegToDMS(b2, true, DMSMode, not ShowLitera.Checked, psz); //  NEW 25.06
+           StringGrid1.Cells[2,i] := DegToDMS(l2, false, DMSMode, not ShowLitera.Checked, psz);
+           StringGrid1.Cells[3,i] := format('%.3f',[h2]);
+         end;
+     end;
+
+     if CheckBox4.Checked then
+          if (RadioGroup1.ItemIndex <> 1) and (RadioGroup2.ItemIndex<>1) then
+            StringGrid1.Cells[3,i] := format('%.3f',[StrToFloat2(StringGrid2.Cells[3,i])]);
+
+   End;
+   StringGrid1.Visible := true;
+ End
+ else
+   Begin
+    StringGrid1.Visible := false;
+    try
+      SK1 := FindCoordinateSystemByCaption(ListBox5.Items[ListBox5.ItemIndex]);
+      SK2 := FindCoordinateSystemByCaption(ListBox4.Items[ListBox4.ItemIndex]);
+
+      Dat1 := CoordinateSystemList[SK1].DatumN;
+      Dat2 := CoordinateSystemList[SK2].DatumN;
+    except
+      exit;
+    end;
+
+     for i := 1 to StringGrid2.RowCount-1 do
+      Begin
+        ProgressBar2.Position := round(i/StringGrid2.RowCount*100);
+        ProgressBar2.Repaint;
+        with StringGrid1 do
+           if i >= RowCount-2 then
+              RowCount := i+1;
+
+        if CoordinateSystemList[SK1].ProjectionType=0 then
+        Begin
+          X1 := StrToLatLon(StringGrid2.Cells[1,i], true);
+          Y1 := StrToLatLon(StringGrid2.Cells[2,i], false);
+          H1 := StrToFloat2(StringGrid2.Cells[3,i]);
+        End
+         else
+           Begin
+              X1 := StrToFloat2(StringGrid2.Cells[1,i]);
+              Y1 := StrToFloat2(StringGrid2.Cells[2,i]);
+              H1 := StrToFloat2(StringGrid2.Cells[3,i]);
+           End;
+        CoordinateSystemToDatum(SK1, x1, y1, h1, B1, L1, H1);
+
+        {из геоида в эллипсоидальные}
+{NEW 21.06 --------------------------------------------------------------------}
+        if Geoid2.ItemIndex > 0 then
+        Begin
+          WGS84 := FindDatum('WGS84');
+          Geo1ForceToGeo2(B1, L1, H1, Dat1, WGS84, WB, WL, WH);
+          {определ€ю координаты в WGS дл€ выбора точки на модели геоида}
+          dH   := GetGeoidH(1, WB, WL);
+          dEll := H1 - WH;
+          H1   := H1 + dEll + dH;
+        End;
+{------------------------------------------------------------------------------}
+
+
+        {√Ћј¬Ќќ≈!}
+        if i  =  StringGrid2.RowCount-1 then
+        StatusBar1.SimpleText := Geo1ForceToGeo2(b1, l1, h1, Dat1, Dat2, b2, l2, h2)
+           else Geo1ForceToGeo2(b1, l1, h1, Dat1, Dat2, b2, l2, h2);
+
+        {из эллипсоидальных в геоид}
+{NEW 21.06 --------------------------------------------------------------------}
+        if Geoid1.ItemIndex > 0 then
+        Begin
+          WGS84 := FindDatum('WGS84');
+          Geo1ForceToGeo2(B2, L2, H2, Dat2, WGS84, WB, WL, WH);
+          {определ€ю координаты в WGS дл€ выбора точки на модели геоида}
+          dH   := GetGeoidH(0, WB, WL);
+          dEll := H2 - WH;
+          H2   := H2 - dEll - dH;
+        End;
+{------------------------------------------------------------------------------}
+
+        DatumToCoordinateSystem(SK2, B2, L2, H2, x2, y2, h2);
+
+        StringGrid1.Cells[0,i] := StringGrid2.Cells[0,i];
+        if not (CoordinateSystemList[SK2].ProjectionType = 0) then
+        begin
+           StringGrid1.Cells[1,i] := format('%.3f',[x2]);
+           StringGrid1.Cells[2,i] := format('%.3f',[y2]);
+           StringGrid1.Cells[3,i] := format('%.3f',[h2]);
+
+           if psz >= 0 then     //  NEW 25.06
+           begin
+               StringGrid2.Cells[1,i] := myformat(x2);
+               StringGrid2.Cells[2,i] := myformat(y2);
+               StringGrid2.Cells[3,i] := myformat(h2);
+           end;
+        end
+          else
+           begin
+              StringGrid1.Cells[1,i] := DegToDMS(B2, true, DMSMode, not ShowLitera.Checked, psz);  //  NEW 25.06
+              StringGrid1.Cells[2,i] := DegToDMS(L2, false, DMSMode, not ShowLitera.Checked, psz);
+              StringGrid1.Cells[3,i] := format('%.3f',[h2]);
+           end;
+
+      if CheckBox4.Checked then
+          if (CoordinateSystemList[SK1].ProjectionType <> 1) and
+             (CoordinateSystemList[SK2].ProjectionType <>1) then
+                StringGrid1.Cells[3,i] := format('%.3f',[StrToFloat2(StringGrid2.Cells[3,i])]);
+
+   End;
+   StringGrid1.Visible := true;
+  end;
+
+  if StringGrid1.RowCount > StringGrid2.RowCount  then
+     StringGrid1.RowCount := StringGrid2.RowCount;
+
+  ProgressBar2.Visible := false;
+end;
+
+procedure TForm1.SpeedButton2Click(Sender: TObject);
+begin
+ if SaveDialog1.Execute then
+    SaveTable(StringGrid1, SaveDialog1.FileName,SaveDialog1.FilterIndex);
+end;
+
+procedure TForm1.SpeedButton3Click(Sender: TObject);
+begin
+ if SaveDialog1.Execute then
+    SaveTable(StringGrid2, SaveDialog1.FileName, SaveDialog1.FilterIndex);
+end;
+
+procedure TForm1.SaveTable(StringGrid: TStringGrid; FileName: String;
+  FileType: byte);
+var i : integer;
+  S :TStringList;
+  sep : string;
+
+begin
+  S := TStringList.Create;
+
+  Case FileType of
+   1: begin
+     sep :=#$9;
+
+     if Copy(Filename, length(Filename)-3,4)<>'.txt' then
+       FileName:= FileName+'.txt';
+   end;
+   2: begin
+     sep :=';';
+     if Copy(Filename, length(Filename)-3,4)<>'.txt' then
+       FileName:= FileName+'.csv';
+   end;
+   3: sep :=' ';
+
+  end;
+
+
+  for i := 1 to StringGrid.RowCount-1 do                             
+    S.Add(StringGrid.Cells[0,i]+sep+StringGrid.Cells[1,i]+sep+StringGrid.Cells[2,i]+sep+StringGrid.Cells[3,i]) ;
+
+  S.SaveToFile(Filename);
+  S.Destroy;
+end;
+
+procedure TForm1.Button5Click(Sender: TObject);
+var i:integer;
+begin
+  ListBox3.Clear;
+  for i := 0 to length(TransformationList) - 1 do
+  begin
+    ListBox3.Items.Add(TransformationList[i].InputDatumName+' -> '+TransformationList[i].ConvertDatumName);
+  end;
+end;
+
+procedure TForm1.ListBox3Click(Sender: TObject);
+var i:integer;
+begin
+  i := ListBox3.ItemIndex;
+  if i > -1 then
+   Label8.Caption := 'dx: '  + FloatTostr(TransformationList[i].dx) +
+                     ' dy: ' + FloatTostr(TransformationList[i].dy) +
+                     ' dz: ' + FloatTostr(TransformationList[i].dz) +
+                     ' wx: ' + FloatTostr(TransformationList[i].wx) +
+                     ' wy: ' + FloatTostr(TransformationList[i].wy) +
+                     ' wz: ' + FloatTostr(TransformationList[i].wz) +
+                     ' m: '  + FloatTostr(TransformationList[i].ms);
+end;
+
+type TGridCracker = class(TStringGrid);
+
+procedure SetCaretPosition(Grid: TStringGrid; col, row, x_pos: Integer);
+begin
+  Grid.Col := Col;
+  Grid.Row := Row;
+  with TGridCracker(Grid) do
+  InplaceEditor.SelStart := x_pos;
+end;
+
+procedure TForm1.DelStringGrid(StringGrid: TStringGrid);
+var i, j :integer;
+    needDel :Boolean;
+begin
+  NeedDel:= true;
+
+  if (StringGrid.RowCount < 3) or (StringGrid.Row < 2) then
+   exit;
+
+
+  if StringGrid.Cells[StringGrid.Col,StringGrid.Row]='' then
+  Begin
+
+      if  StringGrid.Col > 0 then
+        StringGrid.Col :=  StringGrid.Col-1
+          else
+          Begin
+
+               for i:= 0 to StringGrid.ColCount-1 do
+                 if StringGrid.Cells[i,StringGrid.Row]<>'' then
+                   begin
+                     NeedDel :=false;
+                     Break;
+                   end;
+                if NeedDel then
+                begin
+                  for i:= StringGrid.Row to StringGrid.RowCount-1 do
+                  for j:= 0 to StringGrid.ColCount-1 do
+                     StringGrid.Cells[j,i] :=
+                        StringGrid.Cells[j,i+1];
+
+                  if StringGrid.Row <> StringGrid.RowCount-1 then
+                    StringGrid.Row := StringGrid.Row -1;
+                  StringGrid.RowCount := StringGrid.RowCount-1;
+                  
+                end
+                 else
+                   StringGrid.Row := StringGrid.Row -1;
+
+              StringGrid.Col :=  StringGrid.ColCount-1;
+
+          End;
+
+      StringGrid.Cells[StringGrid.Col,StringGrid.Row] :=  StringGrid.Cells[StringGrid.Col,StringGrid.Row] + ' ';
+      SetCaretPosition(StringGrid,StringGrid.Col,StringGrid.Row,length( StringGrid.Cells[StringGrid.Col,StringGrid.Row]));
+  End;
+end;
+
+{procedure TForm1.CMDialogKey(var Msg: TWMKey);
+begin
+  if Msg.Charcode = vk_Tab then
+  if StringGrid1.Focused then
+   TabStringGrid(StringGrid1)
+    else
+      if StringGrid2.Focused then
+       TabStringGrid(StringGrid2);
+end;  }
+
+procedure TForm1.Button7Click(Sender: TObject);
+var SK1,SK2, zone :integer;
+    B1,L1,H1, B2,L2,H2, x, y : double;
+begin
+
+  SK1 := FindDatum('WGS84');
+  SK2 := FindDatum('GSK2011');
+
+ // Label6.Caption := IntToStr(Sk1)+'    '+  IntTostr(Sk2);
+
+  b1 := StrToLatLon(edit1.text, true);
+  l1 := StrToLatLon(edit2.text, false);
+  h1 := StrToFloat2(edit5.text);
+
+  StatusBar1.SimpleText := Geo1ForceToGeo2(b1, l1, h1, SK1, SK2, b2, l2, h2);
+
+  GeoToGaussKruger(SK2, b2,l2,x,y,zone,true);
+
+  Label9.Caption := format('Gauss '+ '%3f',[x])+'   '+  format('%3f',[y])+'  ' + format('%3f',[h2]);
+  Label10.Caption := Degtodms(b2, DMSMode)+'    '+  Degtodms(l2, DMSMode) +'   '+format('%.3f',[h2]);
+end;
+
+procedure TForm1.Init;
+begin
+
+   StatusBar1.SimpleText := GeoInit('Data\Sources.loc', inf[40], inf[41]);
+   ReInit;
+   Inited := true;
+end;
+
+procedure TForm1.PageControl1Change(Sender: TObject);
+begin
+  case PageControl1.ActivePageIndex of
+   0: begin
+     ListBox1.OnChange(nil);
+     RenameTabs(StringGrid1,RadioGroup1.ItemIndex);
+     RenameTabs(StringGrid2,RadioGroup2.ItemIndex);
+   end;
+   1:  begin
+
+   end;
+  end;
+
+end;
+
+procedure TForm1.Button8Click(Sender: TObject);
+var Dat1,Dat2, SK : Integer;
+    B1,L1,H1, B2,L2,H2, x, y : double;
+begin
+
+ SK := FindCoordinateSystem('MSK54-4');
+ Dat1 := FindDatum('WGS84');
+ Dat2 := CoordinateSystemList[SK].DatumN;
+
+
+  b1 := StrToLatLon(edit1.text, true);
+  l1 := StrToLatLon(edit2.text, false);
+  h1 := StrToFloat2(edit5.text);
+
+  StatusBar1.SimpleText := Geo1ForceToGeo2(b1, l1, h1, Dat1, Dat2, b2, l2, h2);
+
+  DatumToCoordinateSystem(SK, B2, L2, H2, x, y, h2);
+
+
+  /// ќЅ–ј“Ќќ
+
+  CoordinateSystemToDatum(SK, x, y, h2, b2, l2, h2);
+  StatusBar1.SimpleText := Geo1ForceToGeo2(b2, l2, h2, Dat2, Dat1, b1, l1, h1);
+
+  Label9.Caption := format('Gauss '+ '%3f',[x])+'   '+  format('%3f',[y])+'  ' + format('%3f',[h2]);
+
+  Label10.Caption := Degtodms(b2, DMSMode)+'    '+  Degtodms(l2, DMSMode) +'   '+format('%.3f',[h2]);
+
+  Edit1.Text := Degtodms(b1, true, DMSMode, not ShowLitera.Checked);
+  Edit2.Text := Degtodms(l1, false, DMSMode, not ShowLitera.Checked);
+  Edit5.Text := format('%.3f',[h1]);
+end;
+
+procedure TForm1.ComboBox1Change(Sender: TObject);
+begin
+  if ComboBox1.ItemIndex<>-1 then
+    findCat(ComboBox1.Items[ComboBox1.ItemIndex],ListBox4);
+  //ListBox4.Sorted :=true;
+  ListBox4.ItemIndex :=0;
+  ListBox4.OnClick(nil);
+end;
+
+procedure TForm1.ComboBox2Change(Sender: TObject);
+begin
+  if ComboBox2.ItemIndex<>-1 then
+    findCat(ComboBox2.Items[ComboBox2.ItemIndex],ListBox5);
+  //ListBox5.Sorted :=true;  
+  ListBox5.ItemIndex :=0;
+  ListBox5.OnClick(nil);
+end;
+
+procedure TForm1.ComboBox3Change(Sender: TObject);
+begin
+ if ComboBox3.ItemIndex<>-1 then
+   DMSMode := ComboBox3.ItemIndex;
+end;
+
+procedure TForm1.ComboBox4Change(Sender: TObject);
+begin
+ Psz := ComboBox4.ItemIndex -1; /// NEW 25.06
+end;
+
+procedure TForm1.FindCat(Cat: String; ListBox: TListBox);
+var i: integer;
+begin
+ ListBox.Items.Clear;
+ for i := 0 to Length( CoordinateSystemList)-1 do
+  if CoordinateSystemList[i].Category = Cat then
+    ListBox.Items.Add(CoordinateSystemList[i].Caption);
+end;
+
+procedure TForm1.FindWGS;
+var I, j:Integer;
+const CN = 'WGS84_LatLon';
+begin
+//
+ j := -1;
+
+ for I := 0 to Length(CoordinateSystemList)-1 do
+   if CoordinateSystemList[I].Name = CN then
+   begin
+     j := I;
+     break;
+   end;
+
+ if j = -1 then
+   exit;
+
+ for I := 0 to ComboBox2.Items.Count - 1 do
+   if CoordinateSystemList[j].Category = ComboBox2.Items[I] then
+   begin
+     ComboBox1.ItemIndex := I;
+     ComboBox2.ItemIndex := I;
+     break;
+   end;
+ FindCat(CoordinateSystemList[j].Category, ListBox4);
+ FindCat(CoordinateSystemList[j].Category, ListBox5);
+ for I := 0 to ListBox4.Items.Count - 1 do
+   if ListBox4.Items[I] = CoordinateSystemList[j].Caption then
+   begin
+     ListBox4.ItemIndex := I;
+     ListBox5.ItemIndex := I;
+     break;
+   end;
+end;
+
+
+procedure TForm1.ListBox4Click(Sender: TObject);
+var i,j, CoordType : integer;
+begin
+   if ListBox4.ItemIndex <= -1 then
+      exit;
+   i := FindCoordinateSystemByCaption(ListBox4.Items[ListBox4.ItemIndex]);
+   CoordType := CoordinateSystemList[i].ProjectionType;
+   RenameTabs(StringGrid1, CoordType);
+
+   if Panel1.Visible then
+   try
+     StatusBar1.SimpleText := DatumList[CoordinateSystemList[i].DatumN].Name;
+
+     for j := 0 to length(CoordinateSystemList[i].parameters)-1 do
+        StatusBar1.SimpleText := StatusBar1.SimpleText+' '+FloatToStr(CoordinateSystemList[i].parameters[j]);
+   except
+   end;
+end;
+
+procedure TForm1.ListBox5Click(Sender: TObject);
+var i, j, CoordType : integer;
+begin
+   if ListBox5.ItemIndex <= -1 then
+    exit;
+   i := FindCoordinateSystemByCaption(ListBox5.Items[ListBox5.ItemIndex]);
+   CoordType := CoordinateSystemList[i].ProjectionType;
+   RenameTabs(StringGrid2, CoordType);
+
+   if Panel1.Visible then
+   try
+     StatusBar1.SimpleText := DatumList[CoordinateSystemList[i].DatumN].Name;
+
+     for j := 0 to length(CoordinateSystemList[i].parameters)-1 do
+        StatusBar1.SimpleText := StatusBar1.SimpleText+' '+FloatToStr(CoordinateSystemList[i].parameters[j]);
+   except
+   end;
+end;
+
+procedure TForm1.N1Click(Sender: TObject);
+var i:integer;
+begin
+  Form3.Combobox1.Clear;
+  for i := 0 to Length(DatumList)-1 do
+     Form3.Combobox1.Items.Add(DatumList[i].Caption);
+  Form3.ComboBox3.Items := ComboBox1.Items;
+  Form3.Edit4.Items := ComboBox1.Items;
+  Form3.ComboBox3.ItemIndex := ComboBox1.ItemIndex;
+  Form3.ComboBox3.OnChange(nil);
+  Form3.ListBox1.ItemIndex := ListBox4.ItemIndex;
+  Form3.ListBox1.OnClick(nil);
+  Form3.Showmodal;
+end;
+
+procedure TForm1.MenuItem1Click(Sender: TObject);
+var i:integer;
+begin
+  Form3.Combobox1.Clear;
+  for i := 0 to Length(DatumList)-1 do
+     Form3.Combobox1.Items.Add(DatumList[i].Caption);
+  Form3.ComboBox3.Items := ComboBox2.Items;
+  Form3.Edit4.Items := ComboBox2.Items;
+  Form3.ComboBox3.ItemIndex := ComboBox2.ItemIndex;
+  Form3.ComboBox3.OnChange(nil);
+  Form3.ListBox1.ItemIndex := ListBox5.ItemIndex;
+  Form3.ListBox1.OnClick(nil);
+  Form3.Showmodal;
+end;
+
+
+procedure TForm1.ReInit;
+var i :integer;
+    S :TStringList;
+begin
+   SetCurrentDir(MyDir);
+
+   ListBox1.Clear;
+   for i := 0 to Length(DatumList)-1 do
+     if DatumList[i].Hidden = false then
+      ListBox1.Items.Add(DatumList[i].Caption);
+
+   ListBox2.Items := ListBox1.Items;
+   ListBox1.ItemIndex := ListBox1.Items.Count-1;
+   ListBox2.ItemIndex := ListBox2.Items.Count-1;
+   ListBox1.OnChange(nil);
+   ListBox2.OnChange(nil);
+
+   ClearGrid(StringGrid1);
+   ClearGrid(StringGrid2);
+   RenameTabs(StringGrid1,RadioGroup1.ItemIndex);
+   RenameTabs(StringGrid2,RadioGroup2.ItemIndex);
+
+   if Panel1.Visible then
+      Button5.Click();
+
+   ComboBox1.Clear;
+   for i := 0 to Length(CoorinateSystemCategories)-1 do
+     ComboBox1.Items.Add(CoorinateSystemCategories[i]);
+
+   Combobox1.Sorted := true;
+
+   For i := ComboBox1.Items.Count DownTo 1 Do
+     if ComboBox1.Items[i] = ComboBox1.Items[i-1] then
+        ComboBox1.Items.Delete(i);
+
+   ComboBox2.Items  := ComboBox1.Items;
+   Form2.ComboBox2.Items := ComboBox1.Items;
+
+
+   ComboBox1.ItemIndex :=0;
+   ComboBox2.ItemIndex :=0;
+   ComboBox1.OnChange(nil);
+   ComboBox2.OnChange(nil);
+
+   Geoid1.Clear;
+   Geoid1.Items.Add(inf[32]);
+
+   for I := 0 To Length(GeoidsMetaData)-1 Do
+       Geoid1.Items.Add(GeoidsMetaData[I].Caption);
+
+   Geoid2.Items := Geoid1.Items;
+   Geoid1.ItemIndex := 0;
+   Geoid2.ItemIndex := 0;
+
+
+   S := TStringList.Create;
+   try
+     S.LoadFromFile('Data\Sources.loc');
+     CheckBox4.Visible := S[3] = '1';
+   except
+   end;  
+   S.Free;
+end;
+
+procedure TForm1.N2Click(Sender: TObject);
+var i:integer;
+begin
+   Form4.ListBox1.Items := ListBox1.Items;
+   Form4.ListBox1.ItemIndex := ListBox1.ItemIndex;
+   Form4.ComboBox1.Clear;
+   for i := 0 to Length(EllipsoidList)-1 do
+     Form4.Combobox1.Items.Add(EllipsoidList[i].Caption);
+   Form4.ListBox1.OnClick(nil);
+
+   Form4.Showmodal;
+end;
+
+procedure TForm1.N3Click(Sender: TObject);
+var i:integer;
+begin
+   Form4.ListBox1.Items := ListBox2.Items;
+   Form4.ListBox1.ItemIndex := ListBox2.ItemIndex;
+   Form4.ComboBox1.Clear;
+   for i := 0 to Length(EllipsoidList)-1 do
+     Form4.Combobox1.Items.Add(EllipsoidList[i].Caption);
+   Form4.ListBox1.OnClick(nil);
+
+   Form4.Showmodal;
+end;
+
+procedure TForm1.ListBox4MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+var
+  idx : Longint;
+begin
+  with Sender as TListBox do begin
+    idx := ItemAtPos(Point(x,y),True);
+    if (idx < 0) or (idx = oldidx) then
+      Exit;
+
+    Application.ProcessMessages;
+    Application.CancelHint;
+
+    oldidx := idx;
+
+    HintX := TListBox(Sender).itemRect(idx).Left;
+    HintY := TListBox(Sender).itemRect(idx).Top;
+
+    Hint := '';
+    if Canvas.TextWidth(Items[idx]) > Width - 24 then
+      Hint:=Items[idx];
+
+  end;
+end;
+
+procedure TForm1.ListBox5MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  with Sender as TListBox do begin
+    idx := ItemAtPos(Point(x,y),True);
+    if (idx < 0) or (idx = oldidx) then
+      Exit;
+
+    Application.ProcessMessages;
+    Application.CancelHint;
+
+    oldidx := idx;
+
+    HintX := TListBox(Sender).itemRect(idx).Left;
+    HintY := TListBox(Sender).itemRect(idx).Top;
+
+    Hint := '';
+    if Canvas.TextWidth(Items[idx]) > Width - 24 then
+      Hint:=Items[idx];
+  end;
+
+end;
+
+procedure TForm1.OnShowHint(var HintStr: string; var CanShow: Boolean;
+  var HintInfo: THintInfo);
+begin
+  if (HintInfo.HintControl is TListBox) then
+  Begin
+    with HintInfo.HintControl as TListBox do
+    begin
+      HintInfo.HintPos := HintInfo.HintControl.ClientToScreen(Point(HintX,HintY));
+      HintStr := HintStr;
+    end;
+  End;
+  inherited;
+end;
+
+procedure TForm1.Button9Click(Sender: TObject);
+var S, S2: TStringList;
+    i, j, k : integer;
+    str, sep, fn : string;
+begin
+  if OpenDialog1.FileName = '' then
+    exit;
+
+  Button3.OnClick(nil);
+  S := TStringList.Create;
+  S2 := TStringList.Create;
+  S.LoadFromFile(OpenDialog1.FileName);
+
+  if DecimalSeparator <> RS.Items[RS.ItemIndex] then
+  DecimalSeparator := RS.Items[RS.ItemIndex][1];
+
+  Try
+
+  case Form2.RadioGroup1.ItemIndex of
+        0: sep:=' ';
+        1: sep:=#$9;
+        2: sep:=Form2.Edit1.Text[1];
+        3: sep:=';';
+        4: sep:=',';
+  end;
+
+  if Form2.SpinEdit1.Value >1 then
+  For i:= 0 to Form2.SpinEdit1.Value-2 do
+    S2.Add(S[i]);
+
+  For i := Form2.SpinEdit1.Value-1 to S.Count-1 do
+  Begin
+     Str := S[i];
+     for j := 1 to 3 do
+        Str := ReplaceCols(Str,sep, StrToInt(Form2.ValueList.Cells[1,j+1])-1,1,
+                           StringGrid2.Cells[j,i-(Form2.SpinEdit1.Value-1)+1]);
+     S2.Add(Str);
+  End;
+
+  if SaveDialog1.Execute then
+  Begin
+    FN := SaveDialog1.FileName;
+      if Pos('.',FN)< length(FN)-5 then
+         FN := FN + '.txt';
+
+    if fileexists(FN) then
+     S2.SaveToFile(FN+'_new.txt')
+     else
+       S2.SaveToFile(FN);
+  End;
+
+  Except
+    MessageDlg('ќшибка пересчета. проверьте настройки',mtError,[mbOk],0);
+  end;
+  S.Destroy;
+  S2.Destroy;
+end;
+
+procedure TForm1.RSClick(Sender: TObject);
+begin
+ if DecimalSeparator <> RS.Items[RS.ItemIndex] then
+           DecimalSeparator := RS.Items[RS.ItemIndex][1];
+end;
+
+procedure TForm1.LangBoxChange(Sender: TObject);
+begin
+  SetCurrentDir(MyDir);
+  Lang := LangBox.Items[LangBox.ItemIndex];
+  SaveLngs;
+  LoadLang(false);
+  ReInit;
+end;
+
+procedure TForm1.RS1Click(Sender: TObject);
+begin
+  Rs.ItemIndex := 0;
+end;
+
+procedure TForm1.RS2Click(Sender: TObject);
+begin
+  Rs.ItemIndex := 1;
+end;
+
+procedure TForm1.N4Click(Sender: TObject);
+begin
+  Form6.Aim := 1;
+  Form6.ShowModal;
+end;
+
+procedure TForm1.N5Click(Sender: TObject);
+begin
+  Form6.Aim := 2;
+  Form6.ShowModal;
+end;
+
+procedure TForm1.SpeedButton8Click(Sender: TObject);
+begin
+  Form7.Side := True;
+  Form7.ShowModal;
+end;
+
+procedure TForm1.SpeedButton9Click(Sender: TObject);
+begin
+  Form7.Side := False;
+  Form7.ShowModal;
+end;
+
+procedure TForm1.StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
+  Rect: TRect; State: TGridDrawState);
+begin
+  DrawCellPlus(StringGrid1, ACol, ARow, Rect, State, 1);
+end;
+
+procedure TForm1.StringGrid2DrawCell(Sender: TObject; ACol, ARow: Integer;
+  Rect: TRect; State: TGridDrawState);
+begin
+  DrawCellPlus(StringGrid2, ACol, ARow, Rect, State, 1);
+end;
+
+procedure TForm1.N15Click(Sender: TObject);
+begin
+  PageControl1.ActivePageIndex :=1;
+  Form6.Aim := 1;
+  Form6.ShowModal;
+end;
+
+procedure TForm1.N16Click(Sender: TObject);
+begin
+  PageControl1.ActivePageIndex :=1;
+  Form6.Aim := 2;
+  Form6.ShowModal;
+end;
+
+procedure TForm1.N20Click(Sender: TObject);
+begin
+  Form7.Side := True;
+  Form7.ShowModal;
+end;
+
+procedure TForm1.N21Click(Sender: TObject);
+begin
+  Form7.Side := False;
+  Form7.ShowModal;
+end;
+
+procedure TForm1.N26Click(Sender: TObject);
+begin
+ SaveLngs;
+ close;
+end;
+
+procedure TForm1.N14Click(Sender: TObject);
+begin
+  Form5.RefreshList;
+  Form5.Showmodal;
+end;
+
+procedure TForm1.N22Click(Sender: TObject);
+begin
+///
+end;
+
+procedure TForm1.N23Click(Sender: TObject);
+begin
+  LocForm.ShowModal;
+  Reinit;
+end;
+
+procedure TForm1.N19Click(Sender: TObject);
+begin
+  ShowMessage('RouteNav GeoCalculator v. 0.7'+ #13 +
+              'by Stanislav O. Shevchuk, 2016-2019'+ #13 +
+              'http://aerosurveys.ru');
+end;
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+  Panel3.Top := StatusBar1.Top + 1;
+  Panel3.Left := ClientWidth - Panel3.Width;
+end;
+
+end.
+
+
