@@ -93,7 +93,7 @@ end_of_head ============================================
 ///---
 EGM2008_10min_Africa-South.gdf
 EGM2008_AS
-EGM2008 10 min. Africa - South	
+EGM2008 10 min. Africa - South
 13.043
 -34.957
 8
@@ -231,7 +231,7 @@ end_of_head ============================================
 ///---
 EGM2008_10min_Canada.gdf
 EGM2008_CAN
-EGM2008 10 min. Canada	
+EGM2008 10 min. Canada
 70
 41.04
 -141
@@ -277,7 +277,7 @@ end_of_head ============================================
 ///---
 EGM2008_10min_Cental-Asia.gdf
 EGM2008_ASIA
-EGM2008 10 min. Cental Asia		
+EGM2008 10 min. Cental Asia
 56
 5.12
 32
@@ -369,7 +369,7 @@ end_of_head ============================================
 ///---
 EGM2008_10min_Japan_Korea.gdf
 EGM2008_JC
-EGM2008 10 min. Japan and Korea		
+EGM2008 10 min. Japan and Korea
 46
 27.12
 124
@@ -415,7 +415,7 @@ end_of_head ============================================
 ///---
 EGM2008_10min_Mexico-Carribean.gdf
 EGM2008_MEX
-EGM2008 10 min. Mexico and Carribean		
+EGM2008 10 min. Mexico and Carribean
 33
 7.08
 -118
@@ -507,7 +507,7 @@ end_of_head ============================================
 ///---
 EGM2008_10min_South-East_Asia.gdf
 EGM2008_ASIASE
-EGM2008 10 min. South-East Asia		
+EGM2008 10 min. South-East Asia
 30
 -11.92
 88
@@ -553,7 +553,7 @@ end_of_head ============================================
 ///---
 EGM2008_10min_USA.gdf
 EGM2008_USA
-EGM2008 10 min. USA		
+EGM2008 10 min. USA
 50
 25.04
 -130
@@ -599,7 +599,7 @@ end_of_head ============================================
 ///---
 EGM2008_5min_Europe-East.gdf
 EGM2008_EE
-EGM2008 5 min. Eastern Europe		
+EGM2008 5 min. Eastern Europe
 71
 35.0144
 17
@@ -691,7 +691,7 @@ end_of_head ============================================
 ///---
 EGM2008_5min_Russia1.gdf
 EGM2008_Rus1
-EGM2008 5 min. Russia - West		
+EGM2008 5 min. Russia - West
 70
 40.012
 27
@@ -783,7 +783,7 @@ end_of_head ============================================
 ///---
 EGM2008_5min_Russia3.gdf
 EGM2008_Rus3
-EGM2008 5 min. Russia - Baikal to Far East		
+EGM2008 5 min. Russia - Baikal to Far East
 75
 40.014
 110
@@ -874,7 +874,7 @@ end_of_head ============================================
 ///---
 EIGEN-5C_30min.gdf
 EIGEN-5C
-EIGEN-5C 30 min.		
+EIGEN-5C 30 min.
 89
 -89
 -180
@@ -920,7 +920,7 @@ end_of_head ============================================
 ///---
 EIGEN-6C4_30min.gdf
 EIGEN-6C4
-EIGEN-6C4 30 min.	
+EIGEN-6C4 30 min.
 90
 -90
 -180
@@ -1011,7 +1011,7 @@ end_of_head ============================================
 ///---
 GAO2012_1.gdf
 GAO2012_1
-GAO2012 5 min. Russia - West		
+GAO2012 5 min. Russia - West
 70
 40.012
 27
@@ -1057,7 +1057,7 @@ end_of_head ============================================
 ///---
 GAO2012_2.gdf
 GAO2012_2
-GAO2012 5 min. Russia - Urals and W. Siberia		
+GAO2012 5 min. Russia - Urals and W. Siberia
 75
 48.0108
 59
@@ -1103,7 +1103,7 @@ end_of_head ============================================
 ///---
 GAO2012_3.gdf
 GAO2012_3
-GAO2012 5 min. Russia - Baikal to Far East	
+GAO2012 5 min. Russia - Baikal to Far East
 75
 42.0132
 110
@@ -1194,7 +1194,7 @@ end_of_head ============================================
 ///---
 GECO_30min.gdf
 GECO30
-GECO 30 min.		
+GECO 30 min.
 89
 -89
 -180
