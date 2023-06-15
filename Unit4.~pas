@@ -507,6 +507,7 @@ begin
    Cells[0,6] := inf[29];
    Cells[0,7] := inf[30];
  End;
+ ListBox1.OnClick(nil);
 end;
 
 end.

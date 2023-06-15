@@ -3,6 +3,17 @@ unit GeoClasses;
 
 interface
 type
+
+  TCoord3D = array [1..3]  of Double; // X, Y, Z (км) или B, L, H (рад., км)
+
+  TTopoOrigin = record
+    BLH, XYZ :Tcoord3D;
+  end;
+
+  TXYZ = record
+    X, Y, Z :Double;
+  end;
+
   TEllipsoid = record
     FileName : String;
     Name :String;
@@ -12,7 +23,7 @@ type
   end;
 
   TConvertData = record
-    FileName : String; 
+    FileName : String;
     InputDatumName : String;
     ConvertDatumName : String;
     // Пониженный приоритет
@@ -53,10 +64,6 @@ type
     isLocalized :boolean;          /// new 09.08.2019
   end;
 
-  {TGeoid = record
-    name :String;
-  end;}
-
   function FindEllipsoid(FindName: string):integer;
   function FindEllipsoidByCaption(FindName: string):integer;
   function AddEllipsoid(Ellipsoid: TEllipsoid):integer;
@@ -92,13 +99,18 @@ type
 
   procedure AddProjection(DatumNumber: integer; ProjectionName: String);
 
+  function Coord3D(X, Y, Z :Double): TCoord3D; overload;
+  function Coord3D(XYZ: TXYZ): TCoord3D; overload;
+
   var EllipsoidList: array of TEllipsoid;
       DatumList: array of TDatum;
       TransformationList : array of TConvertData;
       CoordinateSystemList : array of TCoordinateSystem;
       CoorinateSystemCategories : array of String;
+      WGS, SK : Integer;
+
   const
-       ProjectionNames : array [0..4] of String = ('LatLon', 'ECEF', 'Gauss', 'UTM', 'UTMS');
+      ProjectionNames : array [0..4] of String = ('LatLon', 'ECEF', 'Gauss', 'UTM', 'UTMS');
 implementation
 
 uses GeoFiles;
@@ -518,6 +530,8 @@ begin
  end;
 
  RefreshCoordinateSystems;
+//  WGS := FindDatum('WGS84');
+//  SK := FindDatum('SK42');
 end;
 
 procedure RefreshCoordinateSystems;
@@ -588,6 +602,16 @@ begin
  end;
  SetLength(CoordinateSystemList, Length(CoordinateSystemList)-1)
 
+end;
+
+function Coord3D(X, Y, Z :Double): TCoord3D;
+begin
+  Result[1] := X;       Result[2] := Y;     Result[3] := Z;
+end;
+
+function Coord3D(XYZ: TXYZ): TCoord3D; overload;
+begin
+  Result[1] := XYZ.X;   Result[2] := XYZ.Y;   Result[3] := XYZ.Z;
 end;
 
 end.

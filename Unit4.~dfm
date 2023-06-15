@@ -2,7 +2,7 @@ object Form4: TForm4
   Left = 348
   Top = 58
   BorderStyle = bsDialog
-  Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1076#1072#1090#1091#1084#1086#1074
+  Caption = '?????????????? ???????'
   ClientHeight = 535
   ClientWidth = 727
   Color = clBtnFace
@@ -21,51 +21,51 @@ object Form4: TForm4
   object Label2: TLabel
     Left = 368
     Top = 8
-    Width = 88
+    Width = 84
     Height = 13
-    Caption = #1059#1085#1080#1082#1072#1083#1100#1085#1086#1077' '#1080#1084#1103':'
+    Caption = '?????????? ???:'
   end
   object Label1: TLabel
     Left = 368
     Top = 48
-    Width = 53
+    Width = 51
     Height = 13
-    Caption = #1053#1072#1079#1074#1072#1085#1080#1077':'
+    Caption = '????????:'
   end
   object Label6: TLabel
     Left = 368
     Top = 88
-    Width = 60
+    Width = 54
     Height = 13
-    Caption = #1048#1084#1103' '#1092#1072#1081#1083#1072':'
+    Caption = '??? ?????:'
   end
   object Label3: TLabel
     Left = 368
     Top = 128
-    Width = 55
+    Width = 54
     Height = 13
-    Caption = #1069#1083#1083#1080#1087#1089#1086#1080#1076
+    Caption = '?????????'
   end
   object Label4: TLabel
     Left = 368
     Top = 248
-    Width = 141
+    Width = 138
     Height = 13
-    Caption = #1057#1074#1103#1079#1100' '#1089' '#1076#1088#1091#1075#1080#1084#1080' '#1076#1072#1090#1091#1084#1072#1084#1080':'
+    Caption = '????? ? ??????? ????????:'
   end
   object Label5: TLabel
     Left = 368
     Top = 329
-    Width = 146
+    Width = 138
     Height = 13
-    Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099' '#1090#1088#1072#1085#1089#1092#1086#1088#1084#1072#1094#1080#1080':'
+    Caption = '????????? ?????????????:'
   end
   object Label7: TLabel
     Left = 536
     Top = 248
-    Width = 178
+    Width = 165
     Height = 13
-    Caption = #1044#1072#1090#1091#1084#1099', '#1089#1074#1103#1079#1072#1085#1085#1099#1077' '#1089' '#1074#1099#1073#1088#1072#1085#1085#1099#1084':'
+    Caption = '??????, ????????? ? ?????????:'
   end
   object Edit1: TEdit
     Left = 368
@@ -113,14 +113,14 @@ object Form4: TForm4
     Top = 176
     Width = 345
     Height = 65
-    Caption = #1056#1077#1078#1080#1084' "'#1054#1090' '#1076#1072#1090#1091#1084#1072' '#1082' '#1076#1072#1090#1091#1084#1091'":'
+    Caption = '????? "?? ?????? ? ??????":'
     TabOrder = 5
     object CheckBox1: TCheckBox
       Left = 8
       Top = 16
       Width = 305
       Height = 17
-      Caption = #1056#1072#1079#1088#1077#1096#1080#1090#1100' '#1087#1077#1088#1077#1089#1095#1077#1090' '#1074' '#1087#1088#1086#1077#1082#1094#1080#1102' '#1043#1072#1091#1089#1089#1072'-'#1050#1088#1102#1075#1077#1088#1072
+      Caption = '????????? ???????? ? ???????? ??????-???????'
       TabOrder = 0
     end
     object CheckBox2: TCheckBox
@@ -128,7 +128,7 @@ object Form4: TForm4
       Top = 40
       Width = 305
       Height = 17
-      Caption = #1056#1072#1079#1088#1077#1096#1080#1090#1100' '#1087#1077#1088#1077#1089#1095#1077#1090' '#1074' UTM'
+      Caption = '????????? ???????? ? UTM'
       TabOrder = 1
     end
   end
@@ -137,7 +137,7 @@ object Form4: TForm4
     Top = 344
     Width = 73
     Height = 25
-    Caption = #1044#1086#1073#1072#1074#1080#1090#1100
+    Caption = '????????'
     TabOrder = 6
     OnClick = Button2Click
   end
@@ -146,7 +146,7 @@ object Form4: TForm4
     Top = 500
     Width = 65
     Height = 25
-    Caption = #1057#1086#1079#1076#1072#1090#1100
+    Caption = '???????'
     TabOrder = 7
     OnClick = Button3Click
   end
@@ -155,7 +155,7 @@ object Form4: TForm4
     Top = 500
     Width = 129
     Height = 25
-    Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
+    Caption = '????????? ?????????'
     TabOrder = 8
     OnClick = Button4Click
   end
@@ -164,7 +164,7 @@ object Form4: TForm4
     Top = 500
     Width = 65
     Height = 25
-    Caption = #1059#1076#1072#1083#1080#1090#1100
+    Caption = '???????'
     TabOrder = 9
     OnClick = Button5Click
   end
@@ -173,7 +173,7 @@ object Form4: TForm4
     Top = 500
     Width = 67
     Height = 25
-    Caption = #1057#1073#1088#1086#1089
+    Caption = '?????'
     TabOrder = 10
     OnClick = Button6Click
   end
@@ -200,7 +200,7 @@ object Form4: TForm4
     Top = 440
     Width = 73
     Height = 25
-    Caption = #1059#1076#1072#1083#1080#1090#1100
+    Caption = '???????'
     TabOrder = 13
     OnClick = Button7Click
   end
@@ -238,7 +238,7 @@ object Form4: TForm4
     Top = 376
     Width = 73
     Height = 25
-    Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
+    Caption = '?????????'
     TabOrder = 15
     OnClick = Button8Click
   end
@@ -247,7 +247,7 @@ object Form4: TForm4
     Top = 408
     Width = 73
     Height = 25
-    Caption = #1057#1073#1088#1086#1089
+    Caption = '?????'
     TabOrder = 16
     OnClick = Button9Click
   end

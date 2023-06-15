@@ -87,8 +87,6 @@ begin
 
 end;
 
-
-
 procedure LoadLang(check:boolean);
 var S : TStringList;
     I, J, K, L :Integer;
@@ -233,7 +231,7 @@ begin
                End;
                End;
             End;
-                 
+
 
          Except
            S.Add(inttostr(k));

@@ -62,6 +62,27 @@ uses GeoClasses, GeoMath, Math;
   function GetGeoidalH(x, y, Hell :Double; Geoid:TGeoid);
   function GetEllipsoidalH(x, y, Hgeo :Double; Geoid:TGeoid);  }
 
+  function DirAngleToAzimuth(DirAngle, B, L: Double; Zone: Integer;
+        isUTM: Boolean):Double;
+  function AzimuthToDirAngle(Azimuth, B, L: Double; Zone: Integer;
+        isUTM: Boolean):Double;
+
+
+  //// Топоцентрические преобразования
+
+  function XYZToNEH(XYZ :TCoord3D; El :TEllipsoid; Orig :TTopoOrigin):TCoord3D;
+  function NEHToXYZ(NEH :TCoord3D; El :TEllipsoid; Orig :TTopoOrigin):TCoord3D;
+
+                       // Подпроцедуры для определения начала
+                       // топоцентрической СК. ZeroH - задать
+                       // начальную высоту (над элл.) равной нулю
+
+  function GetTopoOriginFromBLH(BLH :TCoord3D; ZeroH :Boolean;
+                                             El :TEllipsoid):TTopoOrigin;
+  function GetTopoOriginFromXYZ(XYZ :TCoord3D; ZeroH :Boolean;
+                                             El :TEllipsoid):TTopoOrigin;
+
+
   var
        ShortestConv : array of integer;
        ShortIn, ShortOut : integer;
@@ -103,7 +124,7 @@ begin
   end;
 
   GetConsts;
-  
+
   B := B * pi / 180;
   L := L * pi / 180;
 
@@ -1973,5 +1994,241 @@ begin
    end;
 
 end;
+
+procedure FixAngle(var Angle: Double);
+begin
+  if Angle < 0 then
+     Angle := Angle + 2*pi
+     else
+     if Angle > 2*pi then
+        Angle := Angle - 2*pi;
+end;
+
+function DirAngleToAzimuth(DirAngle, B, L: Double; Zone: Integer;
+        isUTM: Boolean):Double;
+var  Delta, L0 : Double;
+begin
+ Result := DirAngle;
+ if isUTM then
+    L0 := (Zone-30)*6 - 3
+    else
+      L0 := Zone*6 - 3;
+
+ Delta := (L - L0)*(pi/180)*sin(B*pi/180);
+ Result := Result + delta;
+
+ FixAngle(Result);
+end;
+
+function AzimuthToDirAngle(Azimuth, B, L: Double; Zone: Integer;
+        isUTM: Boolean):Double;
+var  Delta, L0 : Double;
+begin
+  Result := Azimuth;
+
+  if isUTM then
+    L0 := (Zone-30)*6 - 3
+    else
+      L0 := Zone*6 - 3;
+
+  Delta := (L - L0)*(pi/180)*sin(B*pi/180);
+  Result := Result - delta;
+
+  FixAngle(Result);
+end;
+
+
+{ ---------------------------------------------------------------------------- }
+
+// ТОПОЦЕНТРИЧЕСКИЕ КОНВЕРТАЦИИ КООРДИНАТ
+
+// входные:  широта (град.), долгота (град.), высота (м), параметры эллипсоида;
+// выходные: X, Y, Z (м)
+function BLHToXYZ(GeoCoord:TCoord3D; El :TEllipsoid) :TCoord3D;
+var N, e2, a : Double;
+    B, L, H :Double;
+
+ procedure GetConsts;
+ var al : Double;
+ begin
+   a  := El.a;
+   al := El.alpha; //(El.a - El.a*El.alpha) / El.a;
+   e2 := 2*al - al*al;
+ end;
+
+begin
+  B := GeoCoord[1];
+  L := GeoCoord[2];
+  H := GeoCoord[3];
+
+  GetConsts;
+
+  B := B*pi/180;
+  L := L*pi/180;
+
+  N := a/sqrt(1-e2*sin(B)*sin(B));
+
+  Result[1] := (N+H)*cos(B)*cos(L);
+  Result[2] := (N+H)*cos(B)*sin(L);
+  Result[3] := ((1-e2)*N+H)*sin(B);
+end;
+
+// входные:  X, Y, Z (м) параметры эллипсоида;
+// выходные: широта (град.), долгота (град.), высота (м).
+function XYZToBLH(Coord:TCoord3D; El :TEllipsoid) :TCoord3D;
+var La, e2, a, D, r, p, c, s1, s2, b : Double;
+    X, Y, Z :Double;
+
+ procedure GetConsts;
+ var al : Double;
+ begin
+   a  := El.a;
+   al := El.alpha;  //(El.a - El.a*El.alpha) / El.a;
+   e2 := 2*al - al*al;
+ end;
+
+begin
+  X := Coord[1];
+  Y := Coord[2];
+  Z := Coord[3];
+
+  if (X = 0) and (Y = 0) and (Z = 0) then
+  Begin
+    Result[1] := 0;
+    Result[2] := 0;
+    Result[3] := - El.a;
+    exit;
+  End;
+
+  GetConsts;
+
+  D := sqrt(sqr(X)+sqr(Y));
+
+  if D = 0 then
+  begin
+     Result[1] := 0.5*pi*Z/abs(Z);
+     Result[2] := 0;
+     Result[3] := Z * Sin(Result[1]) -
+                  a * sqrt(1-e2*sin(Result[1])*sin(Result[1]));
+  end
+   else
+   begin
+     La := abs(arcsin(Y/D));
+
+     if (Y < 0) and (X > 0) then Result[2] := 2*pi - La;
+     if (Y < 0) and (X < 0) then Result[2] := pi + La;
+     if (Y > 0) and (X < 0) then Result[2] := pi - La;
+     if (Y > 0) and (X > 0) then Result[2] := La;
+     if (Y = 0) and (X < 0) then Result[2] := 0;
+     if (Y = 0) and (X > 0) then Result[2] := pi;
+   end;
+
+   if Z = 0 then
+   begin
+      Result[1] := 0;
+      Result[3] := D - a;
+   end
+    else
+    begin
+
+       r := sqrt(sqr(X)+sqr(Y)+sqr(Z));
+       c := arcsin(Z/r);
+       p := (e2 * a) / (2 * r);
+
+       s2 := 0;
+       repeat
+         s1 := s2;
+         b  := c + s1;
+         s2 := p * sin(2*b) / sqrt(1 - e2 * sqr(sin(b)) ) ;
+         s2 := arcsin( s2 );
+       until ( abs(s2 - s1) < 0.0001/ro);
+
+          Result[1] := b;
+          Result[3] := D*cos(B) + Z*sin(B) - a*sqrt(1-e2*sin(B)*sin(B));
+    end;
+
+    if Result[2] > pi then Result[2] := Result[2] - 2*pi;
+
+    Result[1] := Result[1] * 180 / pi;
+    Result[2] := Result[2] * 180 / pi;
+end;
+
+// входные:  X, Y, Z (м) параметры эллипсоида, начало топоцентрической СК (ТЦСК)
+// выходные: Север N, Восток E, Высота H(м).
+function XYZToNEH(XYZ :TCoord3D; El :TEllipsoid; Orig :TTopoOrigin):TCoord3D;
+var
+  B0, L0, H0 :Double;
+  X0, Y0, Z0 :Double;
+  X,  Y,  Z  :Double;
+begin
+  X  := XYZ[1];         Y  := XYZ[2];           Z  := XYZ[3];
+  B0 := Orig.BLH[1];    L0 := Orig.BLH[2];      H0 := Orig.BLH[3];
+  X0 := Orig.XYZ[1];    Y0 := Orig.XYZ[2];      Z0 := Orig.XYZ[3];
+
+  B0 := B0*pi/180;      L0 := L0*pi/180;        {Градусы в радианы}
+
+  Result[2] := -(X - X0)*sin(L0) + (Y - Y0)*cos(L0);                      {E}
+
+  Result[1] := -(X - X0)*sin(B0)*cos(L0) - (Y - Y0)*sin(B0)*sin(L0)       {N}
+               +(Z - Z0)*cos(B0);
+  Result[3] :=  (X - X0)*cos(B0)*cos(L0) + (Y - Y0)*cos(B0)*sin(L0)       {H}
+               +(Z - Z0)*sin(B0);
+
+  Result[3] := Result[3] + H0;
+end;
+
+// входные:  Север N, Восток E, Высота H (м) параметры эллипсоида, начало ТЦСК;
+// выходные: X, Y, Z (м).
+function NEHToXYZ(NEH :TCoord3D; El :TEllipsoid; Orig :TTopoOrigin):TCoord3D;
+var
+  B0, L0, H0 :Double;
+  X0, Y0, Z0 :Double;
+  N,  E,  H  :Double;
+begin
+  B0 := Orig.BLH[1];    L0 := Orig.BLH[2];      H0 := Orig.BLH[3];
+  X0 := Orig.XYZ[1];    Y0 := Orig.XYZ[2];      Z0 := Orig.XYZ[3];
+  N  := NEH[1];         E  := NEH[2];           H  := NEH[3] + H0;
+
+  B0 := B0*pi/180;      L0 := L0*pi/180;        {Градусы в радианы}
+
+  Result[1] := X0 - E*sin(L0) - N*sin(B0)*cos(L0) + H*cos(B0)*cos(L0);    {X}
+  Result[2] := Y0 + E*cos(B0) - N*sin(B0)*sin(L0) + H*cos(B0)*sin(L0);    {Y}
+  Result[3] := Z0 + N*cos(B0) + H*sin(B0);                                {Z}
+end;
+
+// входные:  начало ТЦСК в виде широты (град.), долготы (град.) и высоты (м),
+//           условие: обнулять ли начальную высоту, параметры эллипсоида;
+// выходные: Начало ТЦСК: X, Y, Z (м); широта, долгота (град.), высота (м).
+function GetTopoOriginFromBLH(BLH :TCoord3D; ZeroH :Boolean;
+                                             El :TEllipsoid):TTopoOrigin;
+begin
+  Result.BLH[1] := BLH[1];
+  Result.BLH[2] := BLH[2];
+  Result.BLH[3] := BLH[3];
+
+  Result.XYZ := BLHToXYZ(Result.BLH, El);
+
+  if ZeroH = False then
+    Result.BLH[3] := 0;
+
+  { H = BLH[3] - высота топоцентрической плоскости над эллипсоидом в точке B, L.
+    Если H = 0, то начало топоцентрической СК проецируется на эллипсоид}
+end;
+
+// входные:  начало ТЦСК в виде  X, Y, Z (м);
+//           условие: обнулять ли начальную высоту, параметры эллипсоида;
+// выходные: Начало ТЦСК: X, Y, Z (м); широта, долгота (град.), высота (м).
+function GetTopoOriginFromXYZ(XYZ :TCoord3D; ZeroH :Boolean;
+                                             El :TEllipsoid):TTopoOrigin;
+var
+  BLH :TCoord3D;
+begin
+  BLH := XYZToBLH(XYZ, El);
+  Result := GetTopoOriginFromBLH(BLH, ZeroH, El);
+end;
+
+
+{ ---------------------------------------------------------------------------- }
+
 
 end.

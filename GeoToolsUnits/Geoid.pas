@@ -52,6 +52,9 @@ function GetKx( A, B, E:Double): Double;    //// A, B, E - координата по x или y
 procedure ResetGeoids;
 procedure LoadGeoid   (FileName :String);
 procedure ReLoadGeoid (FileName :String; N: Integer);
+procedure ReLoadGeoidbyName (GeoidName :String; N: Integer);
+procedure ReLoadGeoidbyFileName (FileName :String; N: Integer);
+procedure ReLoadGeoidbyID (GID :String; N: Integer);
 procedure DeleteGeoid (N:Integer);
 
 procedure SaveGeoidsMeta(Dir : String);
@@ -204,6 +207,39 @@ begin
    S.Free;
 end;
 
+procedure ReLoadGeoidbyName (GeoidName :String; N: Integer);
+var GN:Integer;
+begin
+  if Length(GeoidList) < N then
+    SetLength(GeoidList, N);
+  GN := FindGeoidMetaByCaption(GeoidName);
+  if GN <> -1 then
+    if GeoidList[N].NameID <> GeoidsMetaData[GN].NameID then
+        ReloadGeoid(GeoidDir + GeoidsMetaData[GN].FileName, N);
+end;
+
+procedure ReLoadGeoidbyID (GID :String; N: Integer);
+var GN:Integer;
+begin
+  if Length(GeoidList) < N then
+    SetLength(GeoidList, N);
+  GN := FindGeoid(GID);
+  if GN <> -1 then
+    if GeoidList[N].NameID <> GeoidsMetaData[GN].NameID then
+        ReloadGeoid(GeoidDir + GeoidsMetaData[GN].FileName, N);
+end;
+
+
+procedure ReLoadGeoidbyFileName (FileName :String; N: Integer);
+var GN:Integer;
+begin
+  if Length(GeoidList) < N then
+    SetLength(GeoidList, N);
+
+  if GeoidList[N].FileName <> FileName then
+        ReloadGeoid(FileName, N);
+end;
+
 ////////////////////////////////////////////////////////////////////////////////
 
 function FindGeoidByCaption (Caption:String): Integer;
@@ -254,8 +290,10 @@ procedure GetGeoidsMeta(Dir : String);
 
 var S, S2, S3   :TSTringList;
     I, J, K     :Integer;
-    Str         :String;
     NeedRefresh :Boolean;
+
+    MyFile      :TextFile;
+    MyText, str, str2 :string;
 begin
   GeoidDir := Dir;
 
@@ -344,15 +382,20 @@ begin
   For I := 0 To S.Count-1 Do
   Begin
     if Pos ('.gdf', S[I]) > 0 then
-    begin
-      S2.LoadFromFile(Dir + S[I]);
+    try
+      AssignFile(myFile, Dir + S[I]);
+      Reset(myFile);
+
+      //S2.LoadFromFile(Dir + S[I]);
 
       GeoidsMetaData[J].FileName := S[I];
       GeoidsMetaData[j].Discription := '';
 
       K := 0;
-      repeat
-        Str := S2[K];
+      while not Eof(myFile) do
+      begin
+        ReadLn(myFile, Str);
+//        Str := S2[K];
 
         if Str = '' then
         begin
@@ -366,7 +409,7 @@ begin
         if Pos(CaptionS, AnsiLowerCase(Str)) > 0 then
             GeoidsMetaData[j].Caption := GetCols(Str,1,GetColCount(Str,' '),' ',false);
 
-        if K < 50 then                                                                
+        if K < 50 then
             GeoidsMetaData[j].Discription := GeoidsMetaData[j].Discription + Str + #13#10;
 
         if Pos(B1S, AnsiLowerCase(Str)) > 0 then
@@ -379,7 +422,11 @@ begin
             GeoidsMetaData[j].L2 := StrToFloat2(GetCols(Str,1,1,' ',false));
 
         inc(K);
-      until (Pos(EndHeadS, Str) > 0) or (K >= S2.Count - 1);
+        if (Pos(EndHeadS, Str) > 0) then
+          break;
+
+
+     end;
 
       if GeoidsMetaData[j].L2 > 180 then
          GeoidsMetaData[j].L2 := GeoidsMetaData[j].L2 - 360;
@@ -392,8 +439,9 @@ begin
          GeoidsMetaData[j].NameID  := GeoidsMetaData[j].FileName;
          GeoidsMetaData[j].Caption := GeoidsMetaData[j].NameID;
       End;
-      
+
       inc(j);
+    except  
     end;
   End;
 

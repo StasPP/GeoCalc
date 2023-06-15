@@ -1,36 +1,36 @@
 
 //
 Form1
-RouteNav: Геокалькулятор v.0.8
+RouteNav GeoCalculator v.0.8
 
 Label12
-Геоид:
+Geoid:
 
 SpeedButton8
 ...
 
 
 Label13
-Геоид:
+Geoid:
 
 SpeedButton9
 ...
 
 
 SpeedButton4
-Загрузить
+Load
 
 
 SpeedButton1
-Загрузить
+Load
 
 
 SpeedButton2
-Сохранить
+Save
 
 
 SpeedButton3
-Сохранить
+Save
 
 
 SpeedButton5
@@ -61,7 +61,7 @@ RS1
 RS2
 
 CheckBox4
-Не переводить высоты
+Don't transformate heights
 
 ComboBox6
 
@@ -70,54 +70,54 @@ Geoid1
 Geoid2
 
 Button6
-<- Вычислить
+<- Calculate
 
 Button3
-Вычислить ->
+Calculate ->
 
 StringGrid1
 
 StringGrid2
 
 PageControl1
-От датума к датуму
-От СК к СК
+Datum to Datum
+CS to CS
 
 TabSheet1
 
 Label5
-*Зона будет закреплена при конвертацию в эту систему координат
+*Zone wil be applied in case of convertation to this Datum
 
 Label7
-*Зона будет закреплена при конвертацию в эту систему коодринат
+**Zone wil be applied in case of convertation to this Datum
 
 RadioGroup1
-Тип координат
-Широта/Долгота
-Пространственные координаты
-Проекция Гаусса-Крюгера
-Проекция UTM (WGS84/NAD83) - Север
-Проекция UTM (WGS84/NAD83) - Юг
+Coordinates kind
+Latitude-Longtitude
+ECEF (Cartesian)
+Gauss-Kruger
+UTM - North Hemisphere
+UTM - South Hemisphere
 
 ListBox1
 
 ListBox2
 
 RadioGroup2
-Тип координат
-Широта/Долгота
-Пространственные координаты
-Проекция Гаусса-Крюгера
-Проекция UTM (WGS84/NAD83) - Север
-Проекция UTM (WGS84/NAD83) - Юг
+Coordinates kind
+Latitude-Longtitude
+ECEF (Cartesian)
+Gauss-Kruger
+UTM - North Hemisphere
+UTM - South Hemisphere
 
 SpinEdit1
 
 CheckBox1
-Задать зону
+Hold Zone
 
 CheckBox2
-Задать зону
+Hold Zone
 
 SpinEdit2
 
@@ -168,7 +168,7 @@ Label10
 
 
 Label11
-РЕЖИМ РАСШИРЕННОЙ ОТЛАДКИ
+Debugging mode
 
 Edit1
 54,5
@@ -221,16 +221,16 @@ Button7
 WGS TO GSK
 
 CheckBox3
-Южное полушарие
+Southern hemisphere
 
 Button8
 To MSK54-4
 
 Button9
-Пересчитать по выбранным СК с сохранением остальных столбцов
+Calculate with saving all columns
 
 RS
-Разделитель десятичного числа
+Decimal separator
 ,
 .
 
@@ -243,7 +243,7 @@ Image1
 Panel4
 
 SpeedButton10
-Формат...
+Format...
 
 
 OpenDialog1
@@ -253,136 +253,136 @@ SaveDialog1
 PopupMenu1
 
 N1
-Редактировать системы координат
+Edit Coordinate Systems
 
 N4
-Поиск СК
+Search Coordinate system
 
 PopupMenu2
 
 MenuItem1
-Редактировать системы координат
+Edit Coordinate Systems
 
 N5
-Поиск СК
+Search Coordinate system
 
 PopupMenu3
 
 N2
-Редактировать датумы
+Edit Datums
 
 PopupMenu4
 
 N3
-Редактировать датумы
+Edit Datums
 
 PopupMenu5
 
 P5N1
-Конвертировать в файл с сохранением дополнительных столбцов
+Convert to file (additional info cells are saved)
 
 MainMenu1
 
 N6
-Файл
+&File
 
 N10
-Открыть файл (левая таблица)
+Open file (Left table)
 
 N11
-Открыть файл (правая таблица)
+Open file (Right table)
 
 N15
-Поиск системы координат (левая таблица)
+Search Coordinate system (Left table)
 
 N16
-Поиск системы координат (правая таблица)
+Search Coordinate system (Right table)
 
 N20
-Выбрать геоид (левая таблица)
+Select geoid model (Left table)
 
 N21
-Выбрать геоид (правая таблица)
+Select geoid model (Right table)
 
 N17
-Сохранить данные (левая таблица)
+Save data (Left table)
 
 N18
-Сохранить данные (правая таблица)
+Save data (Right table)
 
 N26
-Закрыть программу
+Close
 
 N7
-Правка
+&Edit
 
 N24
-Очистить левую таблицу
+Clear the left table
 
 N25
-Очистить правую таблицу
+Clear the right table
 
 N27
-Перевод координат левая -> правая
+Convert Left -> Right
 
 N28
-Перевод координат правая -> левая
+Convert Right -> Left
 
 N29
-Настроить формат вывода результата
+Set Format for Result Coordinates 
 
 N8
-База данных
+&Data base
 
 N12
-Редактировать системы координат
+Edit Coordinate systems
 
 N13
-Редактировать датумы
+Edit Datums
 
 N14
-Редактировать эллипсоиды
+Edit Ellipsoids
 
 N9
-Инструменты
+&Tools
 
 N22
-Конвертация с сохранением столбцов (левая таблица)
+Convert left table to file (additional info cells are saved)
 
 N23
-Локализация план-схемы
+Localization tool
 
 N19
-О программе
+&About
 
 //
 Form2
-Параметры открываемого файла
+File format settings
 
 Label3
-Фрагмент результатов открытия файла при заданных настройках
+Preview
 
 Button1
-Открыть
+Open
 
 Button2
-Отмена
+Cancel
 
 StringGrid1
 
 GroupBox2
-Параметры формата
+Format parameters
 
 Label1
-Начать со строки:
+Start string N:
 
 RadioGroup1
-Разделители
-Пробелы
-Табуляция
-Другие
-Точки с запятой
-Запятые
+Separators
+Space
+Tab
+Other
+;
+,
 
 Edit1
 
@@ -392,20 +392,20 @@ ValueList
 SpinEdit1
 
 PageControl1
-Датумы
-Системы координат
+Datums
+Coordinate Systems
 
 TabSheet1
 
 ComboBox1
 
 RadioGroup2
-Тип координат
-Широта/Долгота
-Пространственные координаты
-Проекция Гаусса-Крюгера
-Проекция UTM (WGS84/NAD83) - Север
-Проекция UTM (WGS84/NAD83) - Юг
+Coordinates kind
+Latitude-Longtitude
+ECEF (Cartesian)
+Gauss-Kruger
+UTM - North Hemisphere
+UTM - South Hemisphere
 
 TabSheet2
 
@@ -416,32 +416,32 @@ ListBox4
 PopupMenu1
 
 N1
-Поиск системы координат
+Search Coordinate system
 
 //
 Form3
-Редактирование систем координиат
+Edit Coordinate Systems
 
 Label1
-Название:
+Name:
 
 Label2
-Уникальное имя:
+ID Name:
 
 Label3
-Датум
+Datum
 
 Label4
-Тип проекции:
+Projection:
 
 Label5
-Параметры:
+Parameters:
 
 Label6
-Имя файла:
+File Name:
 
 Label7
-Категория:
+Group:
 
 ComboBox1
 
@@ -459,13 +459,13 @@ Button1
 ComboBox2
 
 Button2
-Создать
+New
 
 Button3
-Сохранить изменения
+Save Changes
 
 Button4
-Сброс
+Reset
 
 ComboBox3
 
@@ -477,44 +477,44 @@ Edit3
 Edit4
 
 Button5
-Удалить
+Delete
 
 isLocal
-Локализация
+Localization
 
 //
 Form4
-Редактирование датумов
+Edit Datums
 
 Label2
-Уникальное имя:
+ID Name:
 
 Label1
-Название:
+Name:
 
 Label6
-Имя файла:
+File Name:
 
 Label3
-Эллипсоид
+Ellipsoid:
 
 Label4
-Связь с другими датумами:
+Convertations:
 
 Label5
-Параметры трансформации:
+Convertation parameters:
 
 Label7
-Датумы, связанные с выбранным:
+Datum2:
 
 Edit1
-
+WGS84
 
 Edit2
-
+WGS-84
 
 Edit3
-
+Data\Datums\WGS84.txt
 
 ComboBox1
 
@@ -522,78 +522,78 @@ Button1
 ...
 
 GroupBox1
-Режим "От датума к датуму":
+Datum To Datum mode:
 
 CheckBox1
-Разрешить пересчет в проекцию Гаусса-Крюгера
+Allow Gauss-Kruger
 
 CheckBox2
-Разрешить пересчет в UTM
+Allow UTM
 
 Button2
-Добавить
+Add
 
 Button3
-Создать
+New
 
 Button4
-Сохранить изменения
+Save
 
 Button5
-Удалить
+Delete
 
 Button6
-Сброс
+Reset
 
 ListBox1
 
 ListBox2
 
 Button7
-Удалить
+Delete
 
 ValueList
 
 Button8
-Сохранить
+Save
 
 Button9
-Сброс
+Reset
 
 ListBox3
 
 //
 Form5
-Редактирование эллипсоидов
+Edit Ellipsoids
 
 Label6
-Имя файла:
+File Name:
 
 Label1
-Название:
+Name:
 
 Label2
-Уникальное имя:
+ID Name:
 
 Label3
-Большая полуось (a), метры:
+Semi-major axis (a), meters:
 
 Label4
-Знаменатель сжатия (1/f):
+inverse flattering (1/f):
 
 ListBox1
 
 Button1
-Сохранить
+Save
 
 Button2
-Сброс
+Reset
 
 Button3
-Добавить
+Add
 
 Button4
-Удалить
+Delete
 
 Edit3
 
@@ -612,32 +612,32 @@ Edit5
 
 //
 Form6
-Поиск системы координат
+Search for Coordinate system
 
 ListBox1
 
 Panel1
 
 Edit1
-Введите фрагмент имени для поиска
+Enter a title fragment to search
 
 //
 Form7
-Геоиды
+Geoids
 
 Image1
 
 Label2
-Уникальное имя:
+ID name:
 
 Label1
-Название:
+Title (caption):
 
 Label6
-Имя файла:
+File name:
 
 Label3
-Описание:
+Discription (header):
 
 Shape1
 
@@ -655,38 +655,38 @@ Edit3
 
 
 Button1
-Отмена
+Cancel
 
 Button2
-Выбрать
+Accept
 
 Memo1
 
 //
 OpenTabFm
-Импорт данных
+Import data
 
 Label1
-Начать со строки:
+Start from:
 
 Label2
-Предварительный просмотр:
+Preview:
 
 Button1
-Открыть
+Open
 
 Button2
-Отмена
+Cancel
 
 StringGrid1
 
 SepG
-Разделители
-Пробелы
-Табуляция
-Другие
-Точки с запятой
-Запятые
+Separators
+Space
+Tab
+Other
+;
+,
 
 Edit1
 '
@@ -697,36 +697,36 @@ SpinEdit1
 
 //
 LocForm
-Локализация план-схем
+Localization tool
 
 GroupBox1
-Настройки локализации
+Settings
 
 Label3
-Метод:
+Method:
 
 Label1
-Допуск контроля, м:
+Error limit, m:
 
 MB
 
 Sc1
-Одинаковый масштаб
+No scaling
 
 Button1
-Далее >>
+Next >>
 
 CheckBox2
-Промежуточная проекция
+Add a projection
 
 ErrLimit
 0.01
 
 SH
-Одинаковая высота
+No height differences
 
 SK1
-СК с заданным исходным датумом
+Complete coordinate system
 
 Load1
 
@@ -747,7 +747,7 @@ CSNum
 StringGrid1
 
 SK2
-СК с определяемыми параметрами локализации
+New coordinate system
 
 Clear2
 
@@ -762,7 +762,7 @@ Load2
 
 
 Edit1
-План-схема (локальная прямоугольная СК)
+Plan (local rectangular coordinate system)
 
 PlanKind
 
@@ -774,14 +774,14 @@ SaveDialog1
 
 //
 LocalizationFm
-Вычислить параметры локализации
+Localization calculator
 
 MainGrid
 
 Panel1
 
 Label1
-Итоговая погрешность, м:
+Error, m:
 
 Label2
 dX:
@@ -793,7 +793,7 @@ Label4
 dH:
 
 Isol
-Вычислить изолированные погрешности 
+Compute isolated errors 
 
 Edit1
 0.0
@@ -801,7 +801,7 @@ Edit1
 Panel2
 
 SaveButton
-Сохранить параметры локализации
+Save the localization
 
 
 RefreshButton
@@ -809,7 +809,7 @@ RefreshButton
 
 
 CloseButton
-Выход
+Close
 
 
 Edit2
@@ -831,7 +831,7 @@ ShowPan
 
 
 Label5
-Исходный датум:
+Initial Datum:
 
 Bevel1
 
@@ -842,7 +842,7 @@ Label7
 -
 
 Label8
-СК/Проекция:
+CS/Projection:
 
 ValueList
 
@@ -850,35 +850,35 @@ ImageList1
 
 //
 SaveLoc
-Сохранить параметры локализации
+Save the localization
 
 Bevel2
 
 SaveButton
-Сохранить параметры локализации
+Save the localization
 
 
 Label1
-ID-имя:
+ID-name:
 
 Label2
-Заголовок:
+Title:
 
 Label3
-Категория:
+Group:
 
 Label4
-Тип:
+Kind:
 
 CloseButton
-Отмена
+Cancel
 
 
 Label5
-Исходный датум:
+Initial Datum:
 
 Label6
-Исходная СК/проекция:
+CS/Projection:
 
 Label7
 -
@@ -891,7 +891,7 @@ Label8
 ValueList
 
 Edit1
-План-схема (локальная прямоугольная СК)
+Plan (local rectangular coordinate system)
 
 PlanKind
 
@@ -899,26 +899,26 @@ Edit2
 Local01
 
 Edit4
-Пользовательская локальная система координат
+User's localization
 
 ComboBox1
 
 //
 Form8
-Формат вывода координат
+Coordinates Output Settings
 
 GroupBox1
-Десятичные разделители
+Decimal separator
 
 RS1
 
 RS2
 
 GroupBox2
-Широта и долгота
+Latitude/Longtitude
 
 Label1
-Знаков после запятой:
+Decimal signs:
 
 ShowLitera
 N/S/E/W
@@ -928,10 +928,10 @@ ComboBox3
 ComboBox4
 
 GroupBox3
-Координаты в метрах
+Coordinates
 
 Label2
-Знаков после запятой:
+Decimal signs:
 
 ComboBox5
 
@@ -939,105 +939,105 @@ Button1
 OK
 
 Button2
-Отмена
+Cancel
 
 GroupBox4
-Высоты
+Heights
 
 Label3
-Знаков после запятой:
+Decimal signs:
 
 ComboBox6
 
 CheckBox4
-Не переводить высоты
+Do not process heights
 
 //
 Form9
-Редактирование систем координат, датумов, эллипсоидов
+Edit coordinate systems, datums, ellipsoids etc.
 
 Label17
-ВНИМАНИЕ! Чтобы изменения систем координат вступили в силу для программ серии RouteNav/RouteEditor (и дополнительных утилит, входящих в программный пакет RouteNav), необходимо перезапустить их. 
+Attention! To accept changes made due using the editor, RouteNav/RouteEditor and the utilities of RouteNav software pack must be restarted.
 
 GroupBox1
-Системы координат
+Coordinate Systems
 
 SpeedButton1
-Редактировать системы координат
+Edit coordinate systems
 
 
 Label1
-Доступно: 
+Available: 
 
 Label2
-Проекция Гаусса-Крюгера: 
+Gauss-Kruger based: 
 
 Label3
-Проекция Меркатора: 
+Transverse Merkator: 
 
 Label4
-Локализация: 
+Localizations: 
 
 Label5
-Другие: 
+Other: 
 
 Label6
-595
+0
 
 Label7
-525
+0
 
 Label8
-60
+0
 
 Label9
 0
 
 Label10
-10
+0
 
 SpeedButton2
-Локализация план-схемы
+Localization tool
 
 
 GroupBox2
-Датумы
+Datums
 
 SpeedButton3
-Редактировать датумы
+Edit Datums
 
 
 Label11
-Доступно: 
+Available: 
 
 Label16
-12
+0
 
 GroupBox3
-Эллипсоиды
+Ellipsoids
 
 SpeedButton4
-Редактировать эллипсоиды
+Edit Ellipsoids
 
 
 Label12
-Доступно: 
+Available: 
 
 Label13
-6
+0
 
 GroupBox4
-Геоиды
+Geoids
 
 SpeedButton5
-Доступные геоиды
+Geoids List
 
 
 Label14
-Доступно: 
+Available: 
 
 Label15
-28
+0
 
 LangBox
 

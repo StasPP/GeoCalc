@@ -94,8 +94,8 @@ end_of_head ============================================
 EGM2008_10min_Africa-South.gdf
 EGM2008_AS
 EGM2008 10 min. Africa - South	
-13,043
--34,957
+13.043
+-34.957
 8
 52
 generating_institute     gfz-potsdam
@@ -141,7 +141,7 @@ EGM2008_10min_Alaska.gdf
 EGM2008_ALA
 EGM2008 10 min. Alaska and Biering Gulf
 72
-50,08
+50.08
 -180
 -140
 generating_institute     gfz-potsdam
@@ -187,9 +187,9 @@ EGM2008_10min_Australia.gdf
 EGM2008_AUS
 EGM2008 10 min. Australia and New Zeland
 -10
--48,88
+-48.88
 110
-179,92
+179.92
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -233,9 +233,9 @@ EGM2008_10min_Canada.gdf
 EGM2008_CAN
 EGM2008 10 min. Canada	
 70
-41,04
+41.04
 -141
--52,04
+-52.04
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -279,9 +279,9 @@ EGM2008_10min_Cental-Asia.gdf
 EGM2008_ASIA
 EGM2008 10 min. Cental Asia		
 56
-5,12
+5.12
 32
-89,92
+89.92
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -371,9 +371,9 @@ EGM2008_10min_Japan_Korea.gdf
 EGM2008_JC
 EGM2008 10 min. Japan and Korea		
 46
-27,12
+27.12
 124
-152,96
+152.96
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -417,9 +417,9 @@ EGM2008_10min_Mexico-Carribean.gdf
 EGM2008_MEX
 EGM2008 10 min. Mexico and Carribean		
 33
-7,08
+7.08
 -118
--60,08
+-60.08
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -463,7 +463,7 @@ EGM2008_10min_South-America.gdf
 EGM2008_SAM
 EGM2008 10 min. South America
 14
--55,92
+-55.92
 -82
 -34
 generating_institute     gfz-potsdam
@@ -509,9 +509,9 @@ EGM2008_10min_South-East_Asia.gdf
 EGM2008_ASIASE
 EGM2008 10 min. South-East Asia		
 30
--11,92
+-11.92
 88
-153,92
+153.92
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -555,9 +555,9 @@ EGM2008_10min_USA.gdf
 EGM2008_USA
 EGM2008 10 min. USA		
 50
-25,04
+25.04
 -130
--60,08
+-60.08
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -601,9 +601,9 @@ EGM2008_5min_Europe-East.gdf
 EGM2008_EE
 EGM2008 5 min. Eastern Europe		
 71
-35,0144
+35.0144
 17
-39,9908
+39.9908
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -647,9 +647,9 @@ EGM2008_5min_Europe-West.gdf
 EGM2008_EW
 EGM2008 5 min. Western Europe
 71
-35,0144
+35.0144
 -24
-17,9832
+17.9832
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -693,9 +693,9 @@ EGM2008_5min_Russia1.gdf
 EGM2008_Rus1
 EGM2008 5 min. Russia - West		
 70
-40,012
+40.012
 27
-59,9868
+59.9868
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -739,9 +739,9 @@ EGM2008_5min_Russia2.gdf
 EGM2008_Rus2
 EGM2008 5 min. Russia - Urals and W. Siberia
 75
-48,0108
+48.0108
 59
-110,9792
+110.9792
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -785,9 +785,9 @@ EGM2008_5min_Russia3.gdf
 EGM2008_Rus3
 EGM2008 5 min. Russia - Baikal to Far East		
 75
-40,014
+40.014
 110
-179,972
+179.972
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -1013,9 +1013,9 @@ GAO2012_1.gdf
 GAO2012_1
 GAO2012 5 min. Russia - West		
 70
-40,012
+40.012
 27
-59,9868
+59.9868
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -1059,9 +1059,9 @@ GAO2012_2.gdf
 GAO2012_2
 GAO2012 5 min. Russia - Urals and W. Siberia		
 75
-48,0108
+48.0108
 59
-110,9792
+110.9792
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field
@@ -1105,9 +1105,9 @@ GAO2012_3.gdf
 GAO2012_3
 GAO2012 5 min. Russia - Baikal to Far East	
 75
-42,0132
+42.0132
 110
-179,972
+179.972
 generating_institute     gfz-potsdam
      generating_date     2019/06/21
         product_type     gravity_field

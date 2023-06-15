@@ -123,17 +123,23 @@ begin
     try
       inc(K);
       for I := 0 to Application.ComponentCount - 1  do
-         if Application.Components[I].Name = S[K] then
+         if (Application.Components[I].Name = S[K]) and (Application.Components[I] is TForm) then
             with Application.Components[I] as TForm Do
             Begin
                inc(K);
                Caption := S[K];
                inc(K);
+            while (S[K] <> '//')or(K < S.Count-1) do
+            BEGIN
+               if (s[k]='//') or (s[K+1]='//') then
+                  break;
+               inc(K);
 
                for J := 0 to ComponentCount - 1 do
                Begin
-                  if S[k]='' then
-                    inc(K);
+
+                  //if S[k]='' then
+                  //  inc(K);
 
                  if Components[J].Name = S[K] then
                  Begin
@@ -225,8 +231,9 @@ begin
                     inc(K);
                  End;
                End;
+               End;
             End;
-                 
+
 
          Except
            S.Add(inttostr(k));

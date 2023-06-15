@@ -985,19 +985,21 @@ begin
    SetCurrentDir(MyDir);
 
    if Geoid1.ItemIndex > 0 then
-   begin
+     ReLoadGeoidbyName(Geoid1.Items[Geoid1.ItemIndex], 0);
+{   begin
       GN := FindGeoidMetaByCaption(Geoid1.Items[Geoid1.ItemIndex]);
       if GN <> -1 then
       if GeoidList[0].NameID <>  GeoidsMetaData[GN].NameID then
         ReloadGeoid(GeoidDir + GeoidsMetaData[GN].FileName, 0);
-   end;
+   end;}
    if Geoid2.ItemIndex > 0 then
-   begin
+     ReLoadGeoidbyName(Geoid2.Items[Geoid2.ItemIndex], 1);
+   {begin
       GN := FindGeoidMetaByCaption(Geoid2.Items[Geoid2.ItemIndex]);
       if GN <> -1 then
       if GeoidList[1].NameID <>  GeoidsMetaData[GN].NameID then
         ReloadGeoid(GeoidDir + GeoidsMetaData[GN].FileName, 1);
-   end;
+   end;}
 {------------------------------------------------------------------------------}
 
    ProgressBar1.Position := 0;
@@ -1300,21 +1302,23 @@ begin
 
    StatusBar1.SimpleText := inf[62];
    SetCurrentDir(MyDir);
-   
+
    if Geoid1.ItemIndex > 0 then
-   begin
+     ReLoadGeoidbyName(Geoid1.Items[Geoid1.ItemIndex], 0);
+ {  begin
       GN := FindGeoidMetaByCaption(Geoid1.Items[Geoid1.ItemIndex]);
       if GN <> -1 then
       if GeoidList[0].NameID <>  GeoidsMetaData[GN].NameID then
          ReloadGeoid(GeoidDir + GeoidsMetaData[GN].FileName, 0);
-   end;
+   end;}
    if Geoid2.ItemIndex > 0 then
-   begin
+     ReLoadGeoidbyName(Geoid2.Items[Geoid2.ItemIndex], 1);
+   {begin
       GN := FindGeoidMetaByCaption(Geoid2.Items[Geoid2.ItemIndex]);
       if GN <> -1 then
       if GeoidList[1].NameID <>  GeoidsMetaData[GN].NameID then
           ReloadGeoid(GeoidDir + GeoidsMetaData[GN].FileName, 1);
-   end;
+   end;}
 {------------------------------------------------------------------------------}
 
   ProgressBar2.Position := 0;
@@ -2635,6 +2639,8 @@ begin
    ComboBox2.Items  := ComboBox1.Items;
    Form2.ComboBox2.Items := ComboBox1.Items;
 
+   for I:= 0 to 4 do
+     Form3.ComboBox2.Items[I] := inf[65+ I];
 
    ComboBox1.ItemIndex :=0;
    ComboBox2.ItemIndex :=0;
@@ -2657,7 +2663,7 @@ begin
      S.LoadFromFile('Data\Sources.loc');
      // CheckBox4.Visible := S[3] = '1';
    except
-   end;  
+   end;
    S.Free;
 end;
 
@@ -2814,6 +2820,7 @@ begin
 end;
 
 procedure TForm1.LangBoxChange(Sender: TObject);
+var I:Integer;
 begin
   SetCurrentDir(MyDir);
   Lang := LangBox.Items[LangBox.ItemIndex];
